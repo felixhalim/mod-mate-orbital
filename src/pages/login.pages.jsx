@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, Link } from "@material-ui/core";
-import LoginForm from "../Components/loginform.component";
-import WelcomeContent from "../Components/welcomecontent.component";
+import LoginForm from "../components/loginform.component";
+import WelcomeContent from "../components/welcomecontent.component";
 
 const Login = () => {
   return (
