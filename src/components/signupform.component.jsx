@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Typography, TextField, Button, Link } from "@material-ui/core";
 const { db, auth } = require("../firebase/index.firebase");
+const axios = require("axios");
 
 const SignUpForm = () => {
   const [name, setName] = useState("");
@@ -27,19 +28,53 @@ const SignUpForm = () => {
     else return false;
   };
 
-  const writeToDb = () => {
+  const writeToDb = async () => {
+    let modules = nusmods.split("&");
+    let mod;
+    let modsTaken = [];
+    for (mod of modules) {
+      if (mod.includes("?")) {
+        mod = mod.split("?");
+        mod = mod[1];
+      }
+      mod = mod.split("=", 1);
+      await axios
+        .get(`https://api.nusmods.com/v2/2018-2019/modules/${mod}.json`)
+        .then(function (response) {
+          if (response.status === 200) {
+            modsTaken.push(mod[0]);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
     let basicFields = {
       notification: [],
       friend_request: [],
       friends: [],
-      mod_taken: [],
+      mods_taken: modsTaken,
     };
-    db.collection("test").add({
-      first: "Adios",
-      last: "Lovelace",
-      born: 1815,
-    });
     db.doc(`/user/${username}`).set(basicFields);
+
+    let bio = {
+      career: "",
+      faculty: "",
+      major: "",
+      name: name,
+      nationality: "",
+      residence: "",
+      username: username,
+    };
+    db.collection(`/user/${username}/bio`).add(bio);
+
+    let private_info = {
+      createdAt: new Date().toISOString(),
+      email: email,
+      telegram_id: "",
+    };
+    db.collection(`/user/${username}/private_info`).add(private_info);
   };
 
   const handleSignUp = (event) => {
@@ -74,8 +109,10 @@ const SignUpForm = () => {
             .then(function (credential) {
               if (credential.user.emailVerified === false) {
                 credential.user.sendEmailVerification().then(function () {
-                  alert("Please verify your email");
                   writeToDb();
+                  alert(
+                    "Accoutn Successfully Created! Please verify your email"
+                  );
                 });
               }
             })
