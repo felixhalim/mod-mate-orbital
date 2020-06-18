@@ -5,11 +5,14 @@ const TestPage = () => {
   const [isLoggedIn, setLogin] = useState(false);
 
   const checkStatus = () => {
-    auth.onAuthStateChanged(function (user) {
+    auth.onAuthStateChanged(async function (user) {
       if (user) {
         if (!user.emailVerified) {
           alert("Fail. Please verify your email!");
           setLogin(false);
+          await user.sendEmailVerification().then(function () {
+            alert("We just sent another verification email");
+          });
           window.location.replace("/");
         } else {
           alert("Login Successful");

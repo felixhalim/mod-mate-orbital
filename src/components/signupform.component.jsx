@@ -39,7 +39,7 @@ const SignUpForm = () => {
       }
       mod = mod.split("=", 1);
       await axios
-        .get(`https://api.nusmods.com/v2/2018-2019/modules/${mod}.json`)
+        .get(`https://api.nusmods.com/v2/2019-2020/modules/${mod}.json`)
         .then(function (response) {
           if (response.status === 200) {
             modsTaken.push(mod[0]);
@@ -111,10 +111,13 @@ const SignUpForm = () => {
                 credential.user.sendEmailVerification().then(function () {
                   writeToDb();
                   alert(
-                    "Accoutn Successfully Created! Please verify your email"
+                    "Account Successfully Created! Please verify your email"
                   );
                 });
               }
+              credential.user.updateProfile({
+                displayName: username,
+              });
             })
             .catch(function (error) {
               var errorCode = error.code;
