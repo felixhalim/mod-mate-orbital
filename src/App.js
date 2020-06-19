@@ -4,7 +4,8 @@ import Login from "./pages/login.pages";
 import SignUp from "./pages/signup.pages";
 // import TestPage from "./pages/testpage.pages";
 
-import Header from "./pages/header/header.component";
+import Header from "./components/header/header.component";
+import Profile from "./pages/profile/profile.pages";
 import "./App.css";
 
 const App = () => (
@@ -20,7 +21,7 @@ const App = () => (
       <Route path="/combo-match" />
       <Route path="/friends" />
       <Route path="/inbox" />
-      <Route path="/profile" />
+      <Route path="/profile" component={Profile} />
     </div>
   </Router>
 );
