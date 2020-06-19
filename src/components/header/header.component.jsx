@@ -43,6 +43,7 @@ const Header = () => {
     <nav>
       {isLoggedIn ? (
         <div>
+          <script src="https://kit.fontawesome.com/a076d05399.js"></script>
           <input type="checkbox" id="check" />
           <label for="check">
             <i class="fas fa-bars" id="btn"></i>
@@ -81,11 +82,6 @@ const Header = () => {
               onClick={logout}
             />
           </ul>
-          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-          <script
-            type="text/javascript"
-            src="C:\Users\Dipasukha\Projects\Trial3\view\src\pages\Header\Header-code.js"
-          ></script>
         </div>
       ) : (
         <div></div>
