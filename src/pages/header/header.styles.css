@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.logout-button {
+  width: 30px;
+  height: 30px;
+  transform: scale(0.8);
+  z-index: 10;
+  transform: translate(60%, 30%);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+  filter: invert(28%) sepia(23%) saturate(407%) hue-rotate(230deg)
+    brightness(95%) contrast(80%);
+  transition-timing-function: ease-in-out;
+}
+
+nav {
+  height: 80px;
+  background: #372f6c;
+  border-bottom-left-radius: 37px;
+  border-bottom-right-radius: 37px;
+}
+
+nav h1 {
+  font-size: 31px;
+  position: absolute;
+  top: 21px;
+  left: 10%;
+  color: white;
+}
+
+nav ul {
+  float: right;
+  margin-right: 100px;
+  font-family: "Montserrat", sans-serif;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  position: relative;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 5px 0;
+  transition: 0.3s;
+}
+
+nav ul li:hover a {
+  color: #b19cd9;
+}
+
+nav ul li a:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: #b19cd9;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s linear;
+}
+
+nav ul li a:hover:before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+label #btn,
+label #cancel {
+  color: white;
+  font-size: 30px;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check {
+  display: none;
+}
+@media (max-width: 1118px) {
+  nav img {
+    left: 8%;
+  }
+}
+@media (max-width: 944px) {
+  nav img {
+    left: 6px;
+    top: 20px;
+    width: 130px;
+  }
+  nav ul li a {
+    font-size: 17px;
+  }
+}
+@media (max-width: 860px) {
+  label #btn {
+    display: block;
+  }
+  ul {
+    position: fixed;
+    width: 100px;
+    height: 100vh;
+    background: #6659b9;
+    top: 80px;
+    left: -100px;
+    text-align: center;
+    transition: all 0.5s;
+  }
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a {
+    font-size: 20px;
+  }
+  #check:checked ~ ul {
+    left: 0;
+  }
+  #check:checked ~ label #btn {
+    display: none;
+  }
+  #check:checked ~ label #cancel {
+    display: block;
+  }
+}
