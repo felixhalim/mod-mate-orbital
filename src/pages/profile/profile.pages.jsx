@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./profile.styles.css";
 import Stranger from "../stranger/stranger.component";
+import ModuleList from "../../components/module-list/module-list.component";
 
 const { auth } = require("../../firebase/index.firebase");
 
@@ -39,7 +40,7 @@ const Profile = () => {
             <div>profile right</div>
           </div>
           <div>
-            <div>module list</div>
+            <ModuleList></ModuleList>
           </div>
         </div>
       ) : (
