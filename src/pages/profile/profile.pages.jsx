@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./profile.styles.css";
 import Stranger from "../stranger/stranger.component";
+import ProfileLeft from "../../components/profile-left/profile-left.component";
 import ModuleList from "../../components/module-list/module-list.component";
 
 const { auth } = require("../../firebase/index.firebase");
@@ -36,7 +37,7 @@ const Profile = () => {
       {isLoggedIn ? (
         <div>
           <div className="profile">
-            <div>profile left</div>
+            <ProfileLeft></ProfileLeft>
             <div>profile right</div>
           </div>
           <div>
