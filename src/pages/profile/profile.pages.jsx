@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./profile.styles.css";
+import Stranger from "../stranger/stranger.component";
 
 const { auth } = require("../../firebase/index.firebase");
 
@@ -42,7 +43,7 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <div>error page</div>
+        <Stranger></Stranger>
       )}
     </div>
   );
