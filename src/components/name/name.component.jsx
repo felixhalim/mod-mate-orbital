@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./name.styles.css";
 
-const firebase = require("firebase");
 const { db, auth } = require("../../firebase/index.firebase");
 
 const EditName = ({ text, placeholder, editRef, type, children, ...props }) => {

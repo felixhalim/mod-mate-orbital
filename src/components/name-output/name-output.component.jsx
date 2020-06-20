@@ -2,14 +2,13 @@ import React, { useRef, useState } from "react";
 import EditName from "../name/name.component";
 import "./name-output.styles.css";
 
-const firebase = require("firebase");
 const { db, auth } = require("../../firebase/index.firebase");
 
 const NameOutput = () => {
   const inputRef = useRef();
   const [content, setContent] = useState("");
 
-  var user = firebase.auth().currentUser;
+  var user = auth.currentUser;
   var username = user.displayName;
 
   const [myname, setMyName] = useState("");

@@ -1,10 +1,10 @@
 import React from "react";
 import "./username-output.styles.css";
 
-const firebase = require("firebase");
+const { auth } = require("../../firebase/index.firebase");
 
 const UsernameOutput = () => {
-  var user = firebase.auth().currentUser;
+  var user = auth.currentUser;
   const username = user.displayName;
 
   return (
