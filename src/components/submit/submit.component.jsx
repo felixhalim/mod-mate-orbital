@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./submit.styles.css";
 
 const Submit = ({ addModules }) => {
-  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    addModules(title);
-    setTitle("");
+    addModules(url);
+    setUrl("");
   };
 
   return (
@@ -15,9 +15,9 @@ const Submit = ({ addModules }) => {
         className="submit-txt"
         type="text"
         name=""
-        value={title}
+        value={url}
         placeholder="Paste your NUSMODS Link here"
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => setUrl(e.target.value)}
       />
       <input
         className="submit-btn"

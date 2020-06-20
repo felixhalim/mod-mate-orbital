@@ -35,7 +35,7 @@ const ModuleList = () => {
       mods_taken: modulesTaken,
     };
 
-    var user = auth().currentUser;
+    let user = auth.currentUser;
     if (user != null) {
       let username = user.displayName;
       db.doc(`/user/${username}`).update(moduleFields);
