@@ -1,0 +1,21 @@
+.box {
+  border-style: solid;
+  border-color: #372f6c;
+  border-radius: 20px;
+  border-width: 1.5px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  padding: 20px;
+  transform: translate(0%, 30%);
+}
+
+.module-list {
+  width: 65vw;
+  margin: 0 auto;
+  display: grid;
+  line-height: 1.3; /*default */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 50px;
+}
