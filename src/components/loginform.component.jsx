@@ -39,7 +39,7 @@ const LoginForm = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(function () {
-        window.location.replace("/test");
+        window.location.replace("/profile");
       })
       .catch(function (error) {
         var errorCode = error.code;

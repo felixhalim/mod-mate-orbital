@@ -1,0 +1,18 @@
+.stranger {
+  justify-content: center;
+  margin-top: 100px;
+  /* transform: translate(0% 50%); */
+}
+
+.stranger-header {
+  font-size: 100px;
+}
+
+.stranger-message {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.stranger-rec {
+  margin-top: 10px;
+}
