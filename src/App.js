@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./pages/login.pages";
-import SignUp from "./pages/signup.pages";
-// import TestPage from "./pages/testpage.pages";
 import { UserProvider } from "./context/UserContext.context";
 
-import Header from "./components/header/header.component";
+import Login from "./pages/login.pages";
+import SignUp from "./pages/signup.pages";
 import Profile from "./pages/profile/profile.pages";
+// import TestPage from "./pages/testpage.pages";
+import Header from "./components/header/header.component";
 import "./App.css";
 
 const App = () => (
@@ -16,7 +16,6 @@ const App = () => (
         <Switch>
           <Route path="/" component={Login} exact />
           <Route path="/signup" component={SignUp} exact />
-          {/* <Route path="/test" component={TestPage} exact /> */}
           <Route path="/" component={Header} />
         </Switch>
         <Route path="/quick-match" />
@@ -24,6 +23,7 @@ const App = () => (
         <Route path="/friends" />
         <Route path="/inbox" />
         <Route path="/profile" component={Profile} />
+        {/* <Route path="/test" component={TestPage} exact /> */}
       </div>
     </Router>
   </UserProvider>
