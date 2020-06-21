@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./header.styles.css";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext.context";
 const { auth } = require("../../firebase/index.firebase");
 
 const Header = () => {
-  const [isLoggedIn, setLogin] = useState(false);
+  const [isLoggedIn, setLogin] = useContext(UserContext);
 
   const checkStatus = () => {
     auth.onAuthStateChanged(function (user) {

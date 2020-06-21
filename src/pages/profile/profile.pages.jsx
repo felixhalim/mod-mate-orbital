@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./profile.styles.css";
 import Stranger from "../stranger/stranger.component";
 import ProfileLeft from "../../components/profile-left/profile-left.component";
 import ProfileRight from "../../components/profile-right/profile-right.component";
 import ModuleList from "../../components/module-list/module-list.component";
+import { UserContext } from "../../context/UserContext.context";
 
 const { auth } = require("../../firebase/index.firebase");
 
 const Profile = () => {
-  const [isLoggedIn, setLogin] = useState(false);
+  const [isLoggedIn, setLogin] = useContext(UserContext);
 
   const checkStatus = () => {
     auth.onAuthStateChanged(async function (user) {
