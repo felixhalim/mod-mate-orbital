@@ -1,38 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./profile.styles.css";
-import Stranger from "../stranger/stranger.component";
 import ProfileLeft from "../../components/profile-left/profile-left.component";
 import ProfileRight from "../../components/profile-right/profile-right.component";
 import ModuleList from "../../components/module-list/module-list.component";
 import { UserContext } from "../../context/UserContext.context";
 
-const { auth } = require("../../firebase/index.firebase");
-
 const Profile = () => {
-  const [isLoggedIn, setLogin] = useContext(UserContext);
-
-  const checkStatus = () => {
-    auth.onAuthStateChanged(async function (user) {
-      if (user) {
-        if (!user.emailVerified) {
-          alert("Please kindly verify your email to access this page :)");
-          setLogin(false);
-          await user.sendEmailVerification().then(function () {
-            alert("We just sent another verification email");
-          });
-          window.location.replace("/");
-        } else {
-          // alert("Login Successful");
-          setLogin(true);
-        }
-      } else {
-        alert("Please kindly log in or sign up to access this page :)");
-        setLogin(false);
-        window.location.replace("/");
-      }
-    });
-  };
-  useEffect(checkStatus, []);
+  const [isLoggedIn] = useContext(UserContext);
 
   return (
     <div>
@@ -47,7 +21,7 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <Stranger></Stranger>
+        <div></div>
       )}
     </div>
   );

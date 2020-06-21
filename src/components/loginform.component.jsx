@@ -8,19 +8,19 @@ const LoginForm = () => {
 
   const isEmpty = (string) => {
     if (string.trim() === "") return true;
-    else return false;
+    else return;
   };
 
   const isEmail = (email) => {
     const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (email.match(emailRegEx)) return true;
-    else return false;
+    else return;
   };
 
   const isNUSEmail = (email) => {
     const emailRegEx = /@u.nus.edu\s*$/;
     if (email.match(emailRegEx)) return true;
-    else return false;
+    else return;
   };
 
   const validateSignInData = () => {
@@ -51,6 +51,7 @@ const LoginForm = () => {
           alert(errorMessage);
         }
         console.log(error);
+        return;
       });
   };
 

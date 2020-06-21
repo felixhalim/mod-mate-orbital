@@ -107,17 +107,18 @@ const SignUpForm = () => {
           auth
             .createUserWithEmailAndPassword(email, password)
             .then(function (credential) {
+              credential.user.updateProfile({
+                displayName: username,
+              });
               if (credential.user.emailVerified === false) {
                 credential.user.sendEmailVerification().then(function () {
                   writeToDb();
                   alert(
-                    "Account Successfully Created! Please verify your email"
+                    "Account Successfully Created! Please check your email for verification"
                   );
+                  window.location.replace("/");
                 });
               }
-              credential.user.updateProfile({
-                displayName: username,
-              });
             })
             .catch(function (error) {
               var errorCode = error.code;
@@ -132,6 +133,7 @@ const SignUpForm = () => {
               }
               console.log(error);
             });
+          return;
         }
       });
   };

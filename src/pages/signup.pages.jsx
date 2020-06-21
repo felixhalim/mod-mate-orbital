@@ -3,14 +3,18 @@ import { Grid, Typography, Link } from "@material-ui/core";
 import SignUpForm from "../components/signupform.component";
 import WelcomeContent from "../components/welcomecontent.component";
 import { UserContext } from "../context/UserContext.context";
+const { auth } = require("../firebase/index.firebase");
 
 const SignUp = () => {
-  const [isLoggedIn] = useContext(UserContext);
+  const [setLogin] = useContext(UserContext);
 
   const checkStatus = () => {
-    if (isLoggedIn) {
-      window.location.replace("/profile");
-    }
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        window.location.replace("/profile");
+        setLogin(true);
+      }
+    });
   };
 
   useEffect(checkStatus, []);
