@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Grid, Typography, Link } from "@material-ui/core";
 import SignUpForm from "../components/signupform.component";
 import WelcomeContent from "../components/welcomecontent.component";
+import { UserContext } from "../context/UserContext.context";
 
 const SignUp = () => {
+  const [isLoggedIn] = useContext(UserContext);
+
+  const checkStatus = () => {
+    if (isLoggedIn) {
+      window.location.replace("/profile");
+    }
+  };
+
+  useEffect(checkStatus, []);
+
   return (
     <Grid container style={{ height: "100vh" }}>
       <Grid container item xs={12} sm={6}>
