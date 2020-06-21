@@ -2,26 +2,29 @@ import React, { useContext, useEffect } from "react";
 import "./header.styles.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext.context";
+import Stranger from "../../pages/stranger/stranger.component";
 const { auth } = require("../../firebase/index.firebase");
 
 const Header = () => {
   const [isLoggedIn, setLogin] = useContext(UserContext);
 
   const checkStatus = () => {
-    auth.onAuthStateChanged(function (user) {
+    auth.onAuthStateChanged(async function (user) {
       if (user) {
         if (!user.emailVerified) {
-          // alert("Fail. Please verify your email!");
+          alert("Fail. Please verify your email!");
           setLogin(false);
+          await user.sendEmailVerification().then(function () {
+            alert("We just sent another verification email");
+          });
           window.location.replace("/");
         } else {
-          // alert("Login Successful");
           setLogin(true);
+          // alert("Login Successful");
         }
       } else {
-        // alert("Fail. Please login!");
+        // alert("Please login!");
         setLogin(false);
-        window.location.replace("/");
       }
     });
   };
@@ -30,9 +33,8 @@ const Header = () => {
     auth
       .signOut()
       .then(function () {
-        // alert("Logout Successful");
-        setLogin(false);
         window.location.replace("/");
+        setLogin(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -40,10 +42,11 @@ const Header = () => {
   };
 
   useEffect(checkStatus, []);
+
   return (
-    <nav>
+    <div>
       {isLoggedIn ? (
-        <div>
+        <nav>
           <script src="https://kit.fontawesome.com/a076d05399.js"></script>
           <input type="checkbox" id="check" />
           <label for="check">
@@ -83,11 +86,11 @@ const Header = () => {
               onClick={logout}
             />
           </ul>
-        </div>
+        </nav>
       ) : (
-        <div></div>
+        <Stranger></Stranger>
       )}
-    </nav>
+    </div>
   );
 };
 
