@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { UserContext } from "../context/UserContext.context";
 const { auth } = require("../firebase/index.firebase");
 
 const TestPage = () => {
-  const [isLoggedIn, setLogin] = useState(false);
+  const [isLoggedIn, setLogin] = useContext(UserContext);
 
   const checkStatus = () => {
     auth.onAuthStateChanged(async function (user) {
