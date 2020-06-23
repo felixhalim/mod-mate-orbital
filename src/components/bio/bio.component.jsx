@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./bio.styles.css";
 
+const { db, auth } = require("../../firebase/index.firebase");
+
 const EditBio = ({ text, placeholder, editRef, type, children, ...props }) => {
   const [isEditing, setEditing] = useState(false);
 
@@ -19,6 +21,21 @@ const EditBio = ({ text, placeholder, editRef, type, children, ...props }) => {
       setEditing(false);
     }
     if (type === "textarea" && enterkey.indexOf(key) > -1) {
+      let user = auth.currentUser;
+      let activebio = children.props.value;
+      if (user != null) {
+        let username = user.displayName;
+        db.collection(`/user/${username}/bio/`)
+          .get()
+          .then((data) => {
+            data.forEach((doc) => {
+              let bioid = doc.id;
+              db.doc(`/user/${username}/bio/${bioid}`).update({
+                bio: activebio,
+              });
+            });
+          });
+      }
       setEditing(false);
     }
   };

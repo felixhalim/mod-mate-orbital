@@ -18,7 +18,6 @@ const NameOutput = () => {
     .then((data) => {
       data.forEach((doc) => {
         setMyName(doc.data().name);
-        console.log(myname);
       });
     });
 
