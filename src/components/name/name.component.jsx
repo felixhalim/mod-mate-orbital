@@ -21,6 +21,21 @@ const EditName = ({ text, placeholder, editRef, type, children, ...props }) => {
       setEditing(false);
     }
     if (type === "textarea" && enterkey.indexOf(key) > -1) {
+      let user = auth.currentUser;
+      let activename = children.props.value;
+      if (user != null) {
+        let username = user.displayName;
+        db.collection(`/user/${username}/bio/`)
+          .get()
+          .then((data) => {
+            data.forEach((doc) => {
+              let nameid = doc.id;
+              db.doc(`/user/${username}/bio/${nameid}`).update({
+                name: activename,
+              });
+            });
+          });
+      }
       setEditing(false);
     }
   };
