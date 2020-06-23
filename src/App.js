@@ -7,6 +7,7 @@ import SignUp from "./pages/signup.pages";
 import Profile from "./pages/profile/profile.pages";
 // import TestPage from "./pages/testpage.pages";
 import Header from "./components/header/header.component";
+import Friends from "./pages/friends/friends.pages";
 import "./App.css";
 
 const App = () => (
@@ -20,7 +21,7 @@ const App = () => (
         </Switch>
         <Route path="/quick-match" />
         <Route path="/combo-match" />
-        <Route path="/friends" />
+        <Route path="/friends" component={Friends} />
         <Route path="/inbox" />
         <Route path="/profile" component={Profile} />
         {/* <Route path="/test" component={TestPage} exact /> */}
