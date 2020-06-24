@@ -87,7 +87,7 @@ const SignUpForm = () => {
       mods_taken: modsTaken,
       name: name,
       nationality: nationality,
-      residence: "",
+      residence: residence,
       username: username,
     };
     db.doc(`/user/${username}`).set(basic_info);
