@@ -146,14 +146,6 @@ const SignUpForm = () => {
                   alert(
                     "Account is successfully created! Please check your email for verification"
                   );
-                  auth
-                    .signOut()
-                    .then(function () {
-                      window.location.replace("/");
-                    })
-                    .catch(function (error) {
-                      console.log(error);
-                    });
                 });
               }
             })
