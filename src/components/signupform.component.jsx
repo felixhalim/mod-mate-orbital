@@ -1,15 +1,45 @@
 import React, { useState } from "react";
-import { Grid, Typography, TextField, Button, Link } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  Link,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
+} from "@material-ui/core";
 const { db, auth } = require("../firebase/index.firebase");
 const axios = require("axios");
+const countryList = require("country-list");
 
 const SignUpForm = () => {
   const [name, setName] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [residence, setResidence] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [nusmods, setNusmods] = useState("");
+  const countries = countryList.getNames();
+  const residences = [
+    "Prince George's Park Residences",
+    "Temasek Hall",
+    "Eusoff Hall",
+    "Raffles Hall",
+    "Kent Ridge Hall",
+    "Sheares Hall",
+    "King Edward VII Hall",
+    "PGP House",
+    "Tembusu College",
+    "College of Alice & Peter Tan",
+    "Cinnamon College",
+    "Residential College 4",
+    "Ridge View Residential College",
+    "Off Campus",
+  ];
 
   const isEmpty = (string) => {
     if (string.trim() === "") return true;
@@ -50,27 +80,27 @@ const SignUpForm = () => {
         });
     }
 
-    let basicFields = {
-      notification: [],
-      friend_request: [],
-      friends: [],
-      mods_taken: modsTaken,
-    };
-    db.doc(`/user/${username}`).set(basicFields);
-
-    let bio = {
+    let basic_info = {
       career: "",
       faculty: "",
       major: "",
+      mods_taken: modsTaken,
       name: name,
-      nationality: "",
-      residence: "",
+      nationality: nationality,
+      residence: residence,
       username: username,
     };
-    db.collection(`/user/${username}/bio`).add(bio);
+    db.doc(`/user/${username}`).set(basic_info);
+
+    let other_info = {
+      request_sent: [],
+      request_received: [],
+      friends: [],
+    };
+    db.collection(`/user/${username}/other_info`).add(other_info);
 
     let private_info = {
-      createdAt: new Date().toISOString(),
+      created_at: new Date().toISOString(),
       email: email,
       telegram_id: "",
     };
@@ -80,10 +110,10 @@ const SignUpForm = () => {
   const handleSignUp = (event) => {
     event.preventDefault();
     if (isEmpty(email)) {
-      alert("Must not be empty");
+      alert("Email must not be empty");
       return;
     } else if (!isEmail(email) || !isNUSEmail(email)) {
-      alert("Must be valid email address");
+      alert("You must sign up using NUS email (@u.nus.edu)");
       return;
     } else if (
       isEmpty(name) ||
@@ -91,10 +121,10 @@ const SignUpForm = () => {
       isEmpty(nusmods) ||
       isEmpty(password)
     ) {
-      alert("Check your form!");
+      alert("We detected error :( please check your form");
       return;
     } else if (password !== confirm) {
-      alert("Password must be the same!");
+      alert("Please check your confirmation password");
       return;
     }
 
@@ -102,7 +132,7 @@ const SignUpForm = () => {
       .get()
       .then((doc) => {
         if (doc.exists) {
-          alert("This username is already taken");
+          alert("Sorry, this username is already taken :(");
         } else {
           auth
             .createUserWithEmailAndPassword(email, password)
@@ -114,9 +144,8 @@ const SignUpForm = () => {
                 credential.user.sendEmailVerification().then(function () {
                   writeToDb();
                   alert(
-                    "Account Successfully Created! Please check your email for verification"
+                    "Account is successfully created! Please check your email for verification"
                   );
-                  window.location.replace("/");
                 });
               }
             })
@@ -125,9 +154,9 @@ const SignUpForm = () => {
               var errorMessage = error.message;
 
               if (errorCode === "auth/weak-password") {
-                alert("The password is too weak.");
+                alert("The password is too weak");
               } else if (error.code === "auth/email-already-in-use") {
-                alert("Email already in use");
+                alert("This email already in use");
               } else {
                 alert(errorMessage);
               }
@@ -139,7 +168,13 @@ const SignUpForm = () => {
   };
 
   return (
-    <Grid container style={{ paddingTop: "10vh", paddingBottom: "10vh" }}>
+    <Grid
+      container
+      style={{
+        paddingTop: "10vh",
+        paddingBottom: "10vh",
+      }}
+    >
       <Grid item xs={12}>
         <Typography variant="h4">Ready to meet new people?</Typography>
       </Grid>
@@ -156,6 +191,38 @@ const SignUpForm = () => {
           onChange={(e) => setName(e.target.value)}
           autoFocus
         />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <FormControl variant="outlined" fullWidth required>
+          <InputLabel id="nationality-label">Nationality</InputLabel>
+          <Select
+            labelId="nationality-label"
+            id="nationality"
+            value={nationality}
+            onChange={(e) => setNationality(e.target.value)}
+            label="Nationality"
+          >
+            {countries.map((country) => (
+              <MenuItem value={country}>{country}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <FormControl variant="outlined" fullWidth required>
+          <InputLabel id="residence-label">Residence</InputLabel>
+          <Select
+            labelId="residence-label"
+            id="residence"
+            value={residence}
+            onChange={(e) => setResidence(e.target.value)}
+            label="Residence"
+          >
+            {residences.map((res) => (
+              <MenuItem value={res}>{res}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </Grid>
       <Grid item xs={12}>
         <TextField
@@ -184,7 +251,7 @@ const SignUpForm = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} md={6}>
         <TextField
           variant="outlined"
           margin="normal"
@@ -198,7 +265,7 @@ const SignUpForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} md={6}>
         <TextField
           variant="outlined"
           margin="normal"

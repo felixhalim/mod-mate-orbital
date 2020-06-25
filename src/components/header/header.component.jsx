@@ -25,6 +25,14 @@ const Header = () => {
       } else {
         // alert("Please login!");
         setLogin(false);
+        auth
+          .signOut()
+          .then(function () {
+            setLogin(false);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
     });
   };

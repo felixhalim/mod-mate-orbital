@@ -10,7 +10,7 @@ const SignUp = () => {
 
   const checkStatus = () => {
     auth.onAuthStateChanged(function (user) {
-      if (user) {
+      if (user.emailVerified) {
         window.location.replace("/profile");
         setLogin(true);
       }
