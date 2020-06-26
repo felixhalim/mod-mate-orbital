@@ -41,6 +41,12 @@ const SignUpForm = () => {
     "Off Campus",
   ];
 
+  function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
   const isEmpty = (string) => {
     if (string.trim() === "") return true;
     else return false;
@@ -128,6 +134,11 @@ const SignUpForm = () => {
       return;
     }
 
+    if (username.includes("/")) {
+      alert("Username cannot contains /");
+      return;
+    }
+
     db.doc(`/user/${username}`)
       .get()
       .then((doc) => {
@@ -188,7 +199,7 @@ const SignUpForm = () => {
           name="name"
           label="Name"
           type="text"
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(toTitleCase(e.target.value))}
           autoFocus
         />
       </Grid>
@@ -248,7 +259,7 @@ const SignUpForm = () => {
           label="NUS Email Address"
           type="text"
           placeholder="e1234567@u.nus.edu"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value.toLowerCase())}
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -289,7 +300,7 @@ const SignUpForm = () => {
           label="NUSMods URL"
           type="url"
           placeholder="https://nusmods.com/timetable/..."
-          onChange={(e) => setNusmods(e.target.value)}
+          onChange={(e) => setNusmods(e.target.value.toUpperCase())}
         />
       </Grid>
       <Grid item xs={12}>
