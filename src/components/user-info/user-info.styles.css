@@ -1,0 +1,178 @@
+.big-box {
+  box-sizing: border-box;
+  /* z-index: -2; */
+  position: absolute;
+  margin-top: -80px;
+  margin-left: 265px;
+  width: 300px;
+  height: 80px;
+  background-color: none;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #372f6c;
+  border-radius: 30px;
+}
+
+.line-left {
+  position: absolute;
+  margin-left: 90px;
+  width: 1.5px;
+  height: 78px;
+  background-color: #372f6c;
+}
+
+.line-right {
+  position: absolute;
+  margin-left: 200px;
+  width: 1.5px;
+  height: 78px;
+  background-color: #372f6c;
+}
+
+/* ________________________________________________ */
+#world-size {
+  width: 27px;
+  height: 27px;
+}
+
+.world-icon {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  width: 15%;
+  height: 55%;
+  background: #372f6c;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.world-icon .world {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.world-icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 6;
+  display: flex;
+  padding-right: 235px;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.world-icon:hover .world {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  margin-left: 120px;
+}
+
+/* ________________________________________________ */
+#telegram-size {
+  width: 27px;
+  height: 27px;
+  filter: grayscale(100%) invert(100%);
+}
+
+.telegram-icon {
+  position: absolute;
+  top: 18px;
+  left: 125px;
+  width: 15%;
+  height: 55%;
+  background: #372f6c;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.telegram-icon .telegram {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.telegram-icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 6;
+  display: flex;
+  padding-right: 235px;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.telegram-icon:hover .telegram {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  margin-left: 120px;
+}
+
+/* ________________________________________________ */
+#mail-size {
+  width: 27px;
+  height: 27px;
+}
+
+.mail-icon {
+  position: absolute;
+  top: 18px;
+  left: 230px;
+  width: 15%;
+  height: 55%;
+  background: #372f6c;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.mail-icon .mail {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.mail-icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 6;
+  display: flex;
+  padding-right: 235px;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.mail-icon:hover .mail {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  margin-left: 120px;
+}

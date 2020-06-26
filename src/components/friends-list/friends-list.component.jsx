@@ -10,11 +10,12 @@ const FriendsList = () => {
   let user = auth.currentUser;
   let username = user.displayName;
 
-  db.doc(`/user/${username}`)
+  db.collection(`/user/${username}/other_info/`)
     .get()
-    .then((doc) => {
-      let data = doc.data();
-      setFriends(data.friends);
+    .then((data) => {
+      data.forEach((doc) => {
+        setFriends(doc.data().friends);
+      });
     });
 
   return (

@@ -1,7 +1,6 @@
 .submit {
   position: absolute;
-  margin-top: -65px;
-  margin-left: 265px;
+  margin-left: 640px;
   background: none;
   height: 40px;
   border-radius: 30px;
@@ -9,6 +8,7 @@
   border-style: solid;
   border-color: #372f6c;
   border-width: 1.5px;
+  transform: translate(0%, -160%);
 }
 
 .submit-btn {
@@ -53,5 +53,5 @@
   font-size: 10px;
   transition: 0.4s;
   line-height: 40px;
-  width: 240px;
+  width: 600px;
 }

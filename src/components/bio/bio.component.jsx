@@ -16,26 +16,18 @@ const EditBio = ({ text, placeholder, editRef, type, children, ...props }) => {
     const { key } = event;
     const enterkey = ["Enter"];
     const keys = ["Escape", "Tab"];
-    const allkeys = [...keys, enterkey];
+    // const allkeys = [...keys, enterkey];
     if (type === "textarea" && keys.indexOf(key) > -1) {
       setEditing(false);
     }
     if (type === "textarea" && enterkey.indexOf(key) > -1) {
       let user = auth.currentUser;
       let activebio = children.props.value;
-      if (user != null) {
-        let username = user.displayName;
-        db.collection(`/user/${username}/bio/`)
-          .get()
-          .then((data) => {
-            data.forEach((doc) => {
-              let bioid = doc.id;
-              db.doc(`/user/${username}/bio/${bioid}`).update({
-                bio: activebio,
-              });
-            });
-          });
-      }
+      let username = user.displayName;
+
+      db.doc(`/user/${username}`).update({
+        bio: activebio,
+      });
       setEditing(false);
     }
   };
@@ -51,7 +43,7 @@ const EditBio = ({ text, placeholder, editRef, type, children, ...props }) => {
         </div>
       ) : (
         <div onClick={() => setEditing(true)}>
-          <span>{text || placeholder || "You can edit this"}</span>
+          <span>{text || placeholder || "Your Bio Here"}</span>
         </div>
       )}
     </section>
