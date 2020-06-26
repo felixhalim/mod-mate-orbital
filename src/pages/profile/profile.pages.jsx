@@ -13,14 +13,10 @@ const Profile = () => {
     <div>
       {isLoggedIn ? (
         <div>
-          <div>
-            <ProfileLeft></ProfileLeft>
-            <ProfileRight></ProfileRight>
-          </div>
-          <div>
-            <ModuleList></ModuleList>
-            <UserInfo></UserInfo>
-          </div>
+          <ProfileLeft></ProfileLeft>
+          <UserInfo></UserInfo>
+          <ProfileRight></ProfileRight>
+          <ModuleList></ModuleList>
         </div>
       ) : (
         <div></div>

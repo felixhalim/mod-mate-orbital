@@ -10,9 +10,6 @@ const UserInfo = () => {
 
   let user = auth.currentUser;
   let username = user.displayName;
-  console.log(world);
-  console.log(teleID);
-  console.log(mail);
 
   useEffect(() => {
     db.doc(`/user/${username}`)
