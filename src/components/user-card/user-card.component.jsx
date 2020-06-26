@@ -1,42 +1,89 @@
 import React from "react";
-import "./user-card.styles.css";
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+  IconButton,
+  Grid,
+} from "@material-ui/core";
+import { School, Language, Chat, Book, Apartment } from "@material-ui/icons";
+
 const UserCard = (props) => {
+  const { residence, nationality, major, career } = props.userData;
   return (
-    <div className="user-container">
-      <img
-        className="user-image"
-        alt="user"
-        src="https://www.abc.net.au/cm/rimage/9913894-3x2-xlarge.jpg?v=5"
-      />
-      <h4 className="user-content">{props.name}</h4>
-      <img
-        className="career-icon"
-        alt="career-icon"
-        src="https://www.materialui.co/materialIcons/action/timeline_white_108x108.png"
-      />
-      <img
-        className="major-icon"
-        alt="major-icon"
-        src="https://www.materialui.co/materialIcons/action/book_white_108x108.png"
-      />
-      <img
-        className="residence-icon"
-        alt="residence-icon"
-        src="https://www.materialui.co/materialIcons/action/home_white_108x108.png"
-      />
-      <img
-        className="nation-icon"
-        alt="nation-icon"
-        src="https://www.materialui.co/materialIcons/action/language_white_108x108.png"
-      />
-      <div className="chat-section">
-        <img
-          className="chat-icon"
-          alt="chat-icon"
-          src="https://cdn.onlinewebfonts.com/svg/img_381628.png"
+    <Card
+      style={{
+        borderRadius: "20px",
+        color: "white",
+        backgroundColor: "#372f6c",
+      }}
+    >
+      <CardActionArea>
+        <CardMedia
+          style={{
+            height: 140,
+            backgroundColor: "#3f3772",
+          }}
+          image="/"
+          title="Contemplative Reptile"
         />
-      </div>
-    </div>
+        <CardContent>
+          <Typography align="center" gutterBottom variant="h5" component="h2">
+            {props.name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Grid container alignItems="center">
+          <Grid container align="center" item xs={4}>
+            <Grid item xs={12}>
+              <IconButton disableRipple>
+                <School htmlColor={career === props.career ? "white" : ""} />
+              </IconButton>
+            </Grid>
+            <Grid item xs={12}>
+              <IconButton disableRipple>
+                <Language
+                  htmlColor={nationality === props.nationality ? "white" : ""}
+                />
+              </IconButton>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            align="center"
+            xs={4}
+            style={{
+              backgroundColor: "#8b66e0",
+              borderRadius: "20px",
+              boxShadow:
+                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+            }}
+          >
+            <IconButton>
+              <Chat fontSize="large" />
+            </IconButton>
+          </Grid>
+          <Grid container align="center" item xs={4}>
+            <Grid item xs={12}>
+              <IconButton color="custom" disableRipple>
+                <Apartment
+                  htmlColor={residence === props.residence ? "white" : ""}
+                />
+              </IconButton>
+            </Grid>
+            <Grid item xs={12}>
+              <IconButton disableRipple>
+                <Book htmlColor={major === props.major ? "white" : ""} />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Grid>
+      </CardActions>
+    </Card>
   );
 };
 
