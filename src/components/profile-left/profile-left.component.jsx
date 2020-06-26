@@ -13,7 +13,7 @@ const ProfileLeft = () => {
   };
 
   const uploadHandler = () => {
-    axios.post("testing.com/file-upload", picture.selectedFile);
+    axios.post("my-domain.com/file-upload", picture.selectedFile);
   };
 
   return (

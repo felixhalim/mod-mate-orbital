@@ -8,17 +8,15 @@ const BioOutput = () => {
   const inputRef = useRef();
   const [content, setContent] = useState("");
 
-  var user = auth.currentUser;
-  var username = user.displayName;
+  let user = auth.currentUser;
+  let username = user.displayName;
 
   const [mybio, setMyBio] = useState("");
 
-  db.collection(`/user/${username}/bio/`)
+  db.doc(`/user/${username}`)
     .get()
-    .then((data) => {
-      data.forEach((doc) => {
-        setMyBio(doc.data().bio);
-      });
+    .then((doc) => {
+      setMyBio(doc.data().bio);
     });
 
   return (
@@ -34,7 +32,7 @@ const BioOutput = () => {
         ref={inputRef}
         type="text"
         name="content"
-        placeholder="Type here"
+        placeholder="Press enter to save"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />

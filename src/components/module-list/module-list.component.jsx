@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./module-list.styles.css";
 import { Card } from "../module/module.component";
 import Submit from "../submit/submit.component";
@@ -7,7 +7,16 @@ const { db, auth } = require("../../firebase/index.firebase");
 const axios = require("axios");
 
 const ModuleList = () => {
+  const [modalModules, setModalModules] = useState(false);
   const [nusmodules, setNusmodules] = useState([]);
+  let user = auth.currentUser;
+  let username = user.displayName;
+
+  useEffect(() => {
+    db.doc(`/user/${username}`)
+      .get()
+      .then((doc) => setNusmodules(doc.data().mods_taken));
+  }, [modalModules]);
 
   const addModules = async (nusmodules) => {
     let modules = nusmodules.split("&");
@@ -35,11 +44,8 @@ const ModuleList = () => {
       mods_taken: modulesTaken,
     };
 
-    let user = auth.currentUser;
-    if (user != null) {
-      let username = user.displayName;
-      db.doc(`/user/${username}`).update(moduleFields);
-    }
+    db.doc(`/user/${username}`).update(moduleFields);
+
     setNusmodules(modulesTaken);
   };
 
