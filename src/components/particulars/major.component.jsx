@@ -47,7 +47,7 @@ const majors = [
   { status: "Architecture" },
   { status: "Industrial Design" },
   { status: "Landscape Architecture" },
-  { status: "Projet & Facilities Management" },
+  { status: "Project & Facilities Management" },
   { status: "Real Estate" },
   { status: "Biomedical Engineering" },
   { status: "Chemical Engineering" },

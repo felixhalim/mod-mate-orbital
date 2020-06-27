@@ -86,6 +86,7 @@
 }
 
 .content p {
+  font-size: 15px;
   color: #333;
 }
 
@@ -113,6 +114,19 @@
   font-size: 15px;
   transition: 0.2s;
   outline: none;
+}
+
+.modal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 20px;
+  outline: none;
+  padding: 50px;
 }
 
 .modal-overlay {
