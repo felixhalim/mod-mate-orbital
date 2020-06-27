@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { UserProvider } from "./context/UserContext.context";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 
 import Login from "./pages/login.pages";
 import SignUp from "./pages/signup.pages";
@@ -11,24 +13,37 @@ import Friends from "./pages/friends/friends.pages";
 import QuickMatch from "./pages/quickmatch/quickmatch.pages";
 import "./App.css";
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#372f6c",
+    },
+    secondary: {
+      main: "#8b66e0",
+    },
+  },
+});
+
 const App = () => (
-  <UserProvider>
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/" component={Login} exact />
-          <Route path="/signup" component={SignUp} exact />
-          <Route path="/" component={Header} />
-        </Switch>
-        <Route path="/quick-match" component={QuickMatch} />
-        <Route path="/combo-match" />
-        <Route path="/friends" component={Friends} />
-        <Route path="/inbox" />
-        <Route path="/profile" component={Profile} />
-        {/* <Route path="/test" component={TestPage} exact /> */}
-      </div>
-    </Router>
-  </UserProvider>
+  <ThemeProvider theme={theme}>
+    <UserProvider>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/" component={Login} exact />
+            <Route path="/signup" component={SignUp} exact />
+            <Route path="/" component={Header} />
+          </Switch>
+          <Route path="/quick-match" component={QuickMatch} />
+          <Route path="/combo-match" />
+          <Route path="/friends" component={Friends} />
+          <Route path="/inbox" />
+          <Route path="/profile" component={Profile} />
+          {/* <Route path="/test" component={TestPage} exact /> */}
+        </div>
+      </Router>
+    </UserProvider>
+  </ThemeProvider>
 );
 
 export default App;
