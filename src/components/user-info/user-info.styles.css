@@ -84,6 +84,26 @@
   filter: grayscale(100%) invert(100%);
 }
 
+.telegram-icon .teleID-input {
+  position: absolute;
+  border: none;
+  background-color: #372f6c;
+  color: white;
+  width: 100px;
+  max-height: 26px;
+  padding: 4px;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+  margin-top: -10px;
+  margin-left: -50px;
+  resize: none;
+}
+
+.telegram-icon:hover .teleID-input {
+  position: absolute;
+  opacity: 1;
+}
+
 .telegram-icon {
   position: absolute;
   top: 18px;

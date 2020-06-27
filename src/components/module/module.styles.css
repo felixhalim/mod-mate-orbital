@@ -1,4 +1,4 @@
-.content {
+.card-content {
   color: #ffffff;
 }
 
@@ -9,7 +9,6 @@
   border-radius: 20px;
   padding: 8px;
   cursor: pointer;
-  -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: transform 0.25s ease-out;
