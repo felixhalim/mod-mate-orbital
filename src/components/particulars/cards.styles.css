@@ -69,9 +69,9 @@
   max-width: 40px;
 }
 
-.card .content {
+.content {
   height: 100%;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,13 +86,26 @@
 }
 
 .content p {
+  font-size: 15px;
   color: #333;
 }
 
-.submit-button,
 .content a {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 15px;
+  padding: 5px 10px;
+  background: #5449a8;
+  text-decoration: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 15px;
+  transition: 0.2s;
+  outline: none;
+}
+
+.submit-button {
+  display: inline-block;
+  margin-top: 30px;
   padding: 5px 10px;
   background: #5449a8;
   text-decoration: none;

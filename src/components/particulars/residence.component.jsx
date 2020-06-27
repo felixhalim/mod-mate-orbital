@@ -17,10 +17,19 @@ const useStyles = makeStyles({
 });
 
 const residences = [
+  { status: "Prince George's Park Residences" },
   { status: "Temasek Hall" },
   { status: "Eusoff Hall" },
   { status: "Raffles Hall" },
-  { status: "Sheares Hall" },
+  { status: "Kent Ridge Hall" },
+  { status: "King Edward VII Hall" },
+  { status: "PGP House" },
+  { status: "Tembusu College" },
+  { status: "College of Alice and Peter Tan" },
+  { status: "Cinnamon College" },
+  { status: "Residential College 4" },
+  { status: "Ridge View Residential College" },
+  { status: "Off Campus" },
 ];
 
 const Residence = () => {

@@ -17,10 +17,16 @@ const useStyles = makeStyles({
 });
 
 const careers = [
-  { status: "year 1" },
-  { status: "year 2" },
-  { status: "year 3" },
-  { status: "year 4" },
+  { status: "Exchange Student" },
+  { status: "Undergraduate Year 1" },
+  { status: "Undergraduate Year 2" },
+  { status: "Undergraduate Year 3" },
+  { status: "Undergraduate Year 4" },
+  { status: "Undergraduate Year 5" },
+  { status: "Graduate Year 1" },
+  { status: "Graduate Year 2" },
+  { status: "Graduate Year 3" },
+  { status: "Graduate Year 4" },
 ];
 
 const Career = () => {
