@@ -53,6 +53,7 @@ const SignUpForm = () => {
   };
 
   const isEmail = (email) => {
+    // eslint-disable-next-line
     const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (email.match(emailRegEx)) return true;
     else return false;
@@ -75,7 +76,7 @@ const SignUpForm = () => {
       }
       mod = mod.split("=", 1);
       await axios
-        .get(`https://api.nusmods.com/v2/2019-2020/modules/${mod}.json`)
+        .get(`https://api.nusmods.com/v2/2019-2020/modules/${mod}.json`) // eslint-disable-next-line
         .then(function (response) {
           if (response.status === 200) {
             modsTaken.push(mod[0]);

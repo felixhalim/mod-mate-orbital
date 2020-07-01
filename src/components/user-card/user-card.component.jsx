@@ -8,8 +8,16 @@ import {
   Typography,
   IconButton,
   Grid,
+  Tooltip,
 } from "@material-ui/core";
-import { School, Language, Chat, Book, Apartment } from "@material-ui/icons";
+import {
+  Timeline,
+  Language,
+  PersonAdd,
+  Chat,
+  Book,
+  Home,
+} from "@material-ui/icons";
 
 const UserCard = (props) => {
   const { residence, nationality, major, career } = props.userData;
@@ -40,16 +48,26 @@ const UserCard = (props) => {
         <Grid container alignItems="center">
           <Grid container align="center" item xs={4}>
             <Grid item xs={12}>
-              <IconButton disableRipple>
-                <School htmlColor={career === props.career ? "white" : ""} />
-              </IconButton>
+              <Tooltip title={props.career || "Unknown"} arrow placement="top">
+                <IconButton disableRipple>
+                  <Timeline
+                    htmlColor={career === props.career ? "white" : ""}
+                  />
+                </IconButton>
+              </Tooltip>
             </Grid>
             <Grid item xs={12}>
-              <IconButton disableRipple>
-                <Language
-                  htmlColor={nationality === props.nationality ? "white" : ""}
-                />
-              </IconButton>
+              <Tooltip
+                title={props.nationality || "Unknown"}
+                arrow
+                placement="top"
+              >
+                <IconButton disableRipple>
+                  <Language
+                    htmlColor={nationality === props.nationality ? "white" : ""}
+                  />
+                </IconButton>
+              </Tooltip>
             </Grid>
           </Grid>
           <Grid
@@ -64,21 +82,33 @@ const UserCard = (props) => {
             }}
           >
             <IconButton>
-              <Chat fontSize="large" />
+              {props.isFriend ? (
+                <Chat fontSize="large" />
+              ) : (
+                <PersonAdd fontSize="large" />
+              )}
             </IconButton>
           </Grid>
           <Grid container align="center" item xs={4}>
             <Grid item xs={12}>
-              <IconButton color="custom" disableRipple>
-                <Apartment
-                  htmlColor={residence === props.residence ? "white" : ""}
-                />
-              </IconButton>
+              <Tooltip
+                title={props.residence || "Unknown"}
+                arrow
+                placement="top"
+              >
+                <IconButton color="custom" disableRipple>
+                  <Home
+                    htmlColor={residence === props.residence ? "white" : ""}
+                  />
+                </IconButton>
+              </Tooltip>
             </Grid>
             <Grid item xs={12}>
-              <IconButton disableRipple>
-                <Book htmlColor={major === props.major ? "white" : ""} />
-              </IconButton>
+              <Tooltip title={props.major || "Unknown"} arrow placement="top">
+                <IconButton disableRipple>
+                  <Book htmlColor={major === props.major ? "white" : ""} />
+                </IconButton>
+              </Tooltip>
             </Grid>
           </Grid>
         </Grid>

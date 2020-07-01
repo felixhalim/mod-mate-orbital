@@ -11,18 +11,26 @@ const QuickList = () => {
   const [selectedMod, setSelectedMod] = useState("");
   const [filter, setFilter] = useState("");
   const [users, setUsers] = useState([]);
+  const [friends, setFriends] = useState([]);
   const [userData, setUserData] = useState([]);
 
   let user = auth.currentUser;
   let username = user.displayName;
 
-  const getUserMods = () => {
+  const getUserData = () => {
     db.doc(`/user/${username}`)
       .get()
       .then((doc) => {
         let data = doc.data();
         setUserData(data);
         setModTaken(data.mods_taken);
+      });
+    db.collection(`/user/${username}/other_info`)
+      .get()
+      .then((data) => {
+        data.forEach((doc) => {
+          setFriends(doc.data().friends);
+        });
       });
   };
 
@@ -42,10 +50,25 @@ const QuickList = () => {
   };
 
   useEffect(() => {
-    getUsers();
-  }, [selectedMod]);
+    function getUsers() {
+      db.collection("user")
+        .where("mods_taken", "array-contains", selectedMod)
+        .get()
+        .then((data) => {
+          let newUsers = [];
+          data.forEach((doc) => {
+            if (doc.id !== username) {
+              newUsers.push(doc.data());
+            }
+          });
+          newUsers !== users && setUsers(newUsers);
+        });
+    }
 
-  useEffect(getUserMods, []);
+    getUsers();
+  }, [selectedMod, username, users]);
+
+  useEffect(getUserData, []);
 
   return (
     <Grid container>
@@ -119,6 +142,7 @@ const QuickList = () => {
                     major={user.major}
                     career={user.career}
                     userData={userData}
+                    isFriend={friends.includes(user.username)}
                   />
                 </Grid>
               ) : (
