@@ -11,6 +11,7 @@ import Profile from "./pages/profile/profile.pages";
 import Header from "./components/header/header.component";
 import Friends from "./pages/friends/friends.pages";
 import QuickMatch from "./pages/quickmatch/quickmatch.pages";
+import ChatPage from "./pages/chat/chat-page.component";
 import "./App.css";
 
 const theme = createMuiTheme({
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/friends" component={Friends} />
           <Route path="/inbox" />
           <Route path="/profile" component={Profile} />
+          <Route path="/chat-page" component={ChatPage} />
           {/* <Route path="/test" component={TestPage} exact /> */}
         </div>
       </Router>

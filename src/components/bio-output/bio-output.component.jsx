@@ -28,7 +28,7 @@ const BioOutput = () => {
     >
       <textarea
         className="bio-input"
-        maxLength="200"
+        maxLength="140"
         ref={inputRef}
         type="text"
         name="content"

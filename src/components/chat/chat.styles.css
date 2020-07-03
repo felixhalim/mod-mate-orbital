@@ -1,0 +1,40 @@
+.structure {
+  width: 80px;
+  height: 515px;
+  border-radius: 20px;
+  transform: translate(87%, 10%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  border: 1.5px solid #372f6c;
+}
+
+.chat-welcome {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #203152;
+}
+
+.chat-desciption {
+  font-size: 20px;
+  color: #203152;
+  margin-bottom: 200px;
+}
+
+.avatarWelcome {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
