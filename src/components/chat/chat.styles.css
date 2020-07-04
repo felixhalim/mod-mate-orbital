@@ -1,0 +1,77 @@
+.structure {
+  width: 80px;
+  height: 515px;
+  border-radius: 20px;
+  transform: translate(87%, 10%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  border: 1.5px solid #372f6c;
+}
+
+.chat-welcome {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #203152;
+}
+
+.chat-desciption {
+  font-size: 20px;
+  color: #203152;
+  margin-bottom: 200px;
+}
+
+.avatarWelcome {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+.error-effect {
+  margin-left: 130px;
+  width: 18.5ch;
+  animation: typing 2s steps(19), blink 0.5s step-end infinite alternate,
+    textAnimation ease-in 0s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #372f6c;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  opacity: 0;
+}
+
+@keyframes textAnimation {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

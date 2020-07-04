@@ -1,0 +1,378 @@
+.top-large-box {
+  box-sizing: border-box;
+  position: absolute;
+  margin-top: 410px;
+  margin-left: 262px;
+  width: 300px;
+  height: 160px;
+  background-color: none;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #372f6c;
+  border-radius: 30px;
+}
+
+.left-line {
+  position: absolute;
+  margin-left: 90px;
+  width: 1.5px;
+  height: 158px;
+  background-color: #372f6c;
+}
+
+.right-line {
+  position: absolute;
+  margin-left: 200px;
+  width: 1.5px;
+  height: 158px;
+  background-color: #372f6c;
+}
+
+.separator-line {
+  position: absolute;
+  margin-top: 80px;
+  width: 298px;
+  height: 1.5px;
+  background-color: #372f6c;
+}
+
+#career--size {
+  width: 27px;
+  height: 27px;
+  transition: 0.5s ease-in-out;
+  margin-top: 8px;
+}
+
+.career--icon {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  width: 15%;
+  height: 28%;
+  background: #372f6c;
+  z-index: 0;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.career--icon .career {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  left: 50%;
+  top: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.career--icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 1;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.career--icon:hover .career {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  left: 50%;
+  top: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.career--icon:hover #career--size {
+  margin-top: 40px;
+}
+
+#major--size {
+  width: 27px;
+  height: 27px;
+  transition: 0.5s ease-in-out;
+  margin-top: 8px;
+}
+
+.major--icon {
+  position: absolute;
+  top: 18px;
+  left: 125px;
+  width: 15%;
+  height: 28%;
+  background: #372f6c;
+  z-index: 0;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.major--icon .major {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  left: 50%;
+  top: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.major--icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 1;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.major--icon:hover .major {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  left: 50%;
+  top: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.major--icon:hover #major--size {
+  margin-top: 40px;
+}
+
+#residence--size {
+  width: 27px;
+  height: 27px;
+  transition: 0.5s ease-in-out;
+  margin-top: 8px;
+}
+
+.residence--icon {
+  position: absolute;
+  top: 18px;
+  left: 230px;
+  width: 15%;
+  height: 28%;
+  background: #372f6c;
+  z-index: 0;
+  text-align: center;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.residence--icon .residence {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  left: 50%;
+  top: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.residence--icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 1;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.residence--icon:hover .residence {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  left: 50%;
+  top: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.residence--icon:hover #residence--size {
+  margin-top: 40px;
+}
+
+#world--size {
+  width: 27px;
+  height: 27px;
+  transition: 0.5s ease-in-out;
+  margin-top: 8px;
+}
+
+.world--icon {
+  position: absolute;
+  top: 98px;
+  left: 20px;
+  width: 15%;
+  height: 28%;
+  background: #372f6c;
+  z-index: 0;
+  text-align: center;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.world--icon .world {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  left: 50%;
+  top: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.world--icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 1;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.world--icon:hover .world {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  left: 50%;
+  top: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.world--icon:hover #world--size {
+  margin-top: 40px;
+}
+
+#telegram--size {
+  width: 27px;
+  height: 27px;
+  filter: grayscale(100%) invert(100%);
+  transition: 0.5s ease-in-out;
+  margin-top: 8px;
+}
+
+.telegram--icon {
+  position: absolute;
+  top: 98px;
+  left: 125px;
+  width: 15%;
+  height: 28%;
+  background: #372f6c;
+  z-index: 0;
+  text-align: center;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.telegram--icon .telegram {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  left: 50%;
+  top: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.telegram--icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 1;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.telegram--icon:hover .telegram {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  left: 50%;
+  top: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.telegram--icon:hover #telegram--size {
+  margin-top: 40px;
+}
+
+#mail--size {
+  width: 27px;
+  height: 27px;
+  transition: 0.5s ease-in-out;
+  margin-top: 8px;
+}
+
+.mail--icon {
+  position: absolute;
+  top: 98px;
+  left: 230px;
+  width: 15%;
+  height: 28%;
+  background: #372f6c;
+  z-index: 0;
+  text-align: center;
+  transition: 0.5s ease-in-out;
+  border-radius: 30px;
+}
+
+.mail--icon .mail {
+  position: absolute;
+  color: #fff;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  left: 50%;
+  top: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.mail--icon:hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #372f6c;
+  z-index: 1;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.mail--icon:hover .mail {
+  position: absolute;
+  opacity: 1;
+  color: #fff;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.mail--icon:hover #mail--size {
+  margin-top: 40px;
+}
