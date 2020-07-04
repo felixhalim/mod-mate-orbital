@@ -38,3 +38,40 @@
   margin-bottom: 20px;
   object-fit: cover;
 }
+
+.error-effect {
+  margin-left: 130px;
+  width: 19ch;
+  animation: typing 2s steps(19), blink 0.5s step-end infinite alternate,
+    textAnimation ease-in 0s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #372f6c;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  opacity: 0;
+}
+
+@keyframes textAnimation {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

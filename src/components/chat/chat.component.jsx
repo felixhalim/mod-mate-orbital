@@ -47,7 +47,7 @@ const Chat = () => {
         <span className="chat-desciption">
           Now you can chat with your new modmate, {`${friendName}`}!
           <br />
-          Let's start talking \ (•◡•) /
+          <div className="error-effect">Let's start talking \ (•◡•) /</div>
         </span>
       </div>
     </div>
