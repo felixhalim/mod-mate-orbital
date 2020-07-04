@@ -7,6 +7,7 @@ const Chat = () => {
   let user = auth.currentUser;
   let username = user.displayName;
 
+  const [isChatting, setIsChatting] = useState(true);
   const [friends, setFriends] = useState("anonymous");
   const [friendName, setFriendName] = useState("");
   const [interlocutor, setInterlocutor] = useState("");
@@ -42,14 +43,18 @@ const Chat = () => {
 
   return (
     <div className="structure">
-      <div className="chat-welcome">
-        <span className="chat-title">{`Congratulations, ${interlocutor} !`}</span>
-        <span className="chat-desciption">
-          Now you can chat with your new modmate, {`${friendName}`}!
-          <br />
-          <div className="error-effect">Let's start talking \ (•◡•) /</div>
-        </span>
-      </div>
+      {isChatting ? (
+        <div className="chat-welcome">
+          <span className="chat-title">{`Congratulations, ${interlocutor} !`}</span>
+          <span className="chat-desciption">
+            Now you can chat with your new modmate, {`${friendName}`}!
+            <br />
+            <div className="error-effect">Let's start talking \ (•◡•) /</div>
+          </span>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

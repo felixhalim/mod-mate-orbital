@@ -41,7 +41,7 @@
 
 .error-effect {
   margin-left: 130px;
-  width: 19ch;
+  width: 18.5ch;
   animation: typing 2s steps(19), blink 0.5s step-end infinite alternate,
     textAnimation ease-in 0s forwards;
   white-space: nowrap;
