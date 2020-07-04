@@ -55,6 +55,8 @@ const Image = () => {
           <CustomUploadButton
             accept="image/x-png,image/gif,image/jpeg"
             name="image"
+            // filename={`${username}`}
+            randomizeFilename="true"
             storageRef={stor.ref("avatars")}
             onUploadSuccess={handleUploadImage}
             style={{
