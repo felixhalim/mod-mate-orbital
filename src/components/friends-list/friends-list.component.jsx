@@ -138,11 +138,13 @@ const FriendList = () => {
               friend.name.toLowerCase().includes(filter) || filter === "" ? (
                 <Grid item xs={3}>
                   <UserCard
+                    avatar={friend.avatar}
                     name={friend.name}
                     residence={friend.residence}
                     nationality={friend.nationality}
                     major={friend.major}
                     career={friend.career}
+                    username={friend.username}
                     userData={userData}
                     isFriend={friends.includes(friend.username)}
                   />
