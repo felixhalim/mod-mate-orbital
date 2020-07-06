@@ -15,6 +15,9 @@ import ChatPage from "./pages/chat/chat-page.component";
 import "./App.css";
 
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: "Montserrat",
+  },
   palette: {
     primary: {
       main: "#372f6c",
