@@ -41,9 +41,8 @@ const QuickList = () => {
       .then((data) => {
         let newUsers = [];
         data.forEach((doc) => {
-          if (doc.id !== username) {
+          if (doc.id !== username && !friends.includes(doc.data().username))
             newUsers.push(doc.data());
-          }
         });
         newUsers !== users && setUsers(newUsers);
       });
@@ -57,9 +56,8 @@ const QuickList = () => {
         .then((data) => {
           let newUsers = [];
           data.forEach((doc) => {
-            if (doc.id !== username) {
+            if (doc.id !== username && !friends.includes(doc.data().username))
               newUsers.push(doc.data());
-            }
           });
           newUsers !== users && setUsers(newUsers);
         });
@@ -129,7 +127,8 @@ const QuickList = () => {
           <>
             <Grid item xs={12}>
               <Alert variant="filled" severity="success">
-                There are {users.length} users taking {selectedMod} currently
+                There are {users.length} users are taking {selectedMod}{" "}
+                currently
               </Alert>
             </Grid>
             {users.map((user) =>

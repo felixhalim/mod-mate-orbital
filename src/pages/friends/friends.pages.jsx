@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import "./friends.styles.css";
 import FriendsList from "../../components/friends-list/friends-list.component";
 import { UserContext } from "../../context/UserContext.context";
+
+import { Grid } from "@material-ui/core";
 
 const Friends = () => {
   const [isLoggedIn] = useContext(UserContext);
@@ -9,12 +10,13 @@ const Friends = () => {
   return (
     <div>
       {isLoggedIn ? (
-        <div>
-          <h1></h1>
-          <div>
+        <Grid container>
+          <Grid item xs={2} />
+          <Grid container item xs={8}>
             <FriendsList></FriendsList>
-          </div>
-        </div>
+          </Grid>
+          <Grid item xs={2} />
+        </Grid>
       ) : (
         <div></div>
       )}
