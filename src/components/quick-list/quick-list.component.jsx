@@ -135,6 +135,7 @@ const QuickList = () => {
               user.name.toLowerCase().includes(filter) || filter === "" ? (
                 <Grid item xs={3}>
                   <UserCard
+                    avatar={user.avatar}
                     name={user.name}
                     residence={user.residence}
                     nationality={user.nationality}
