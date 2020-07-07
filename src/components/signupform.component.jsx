@@ -9,7 +9,13 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 const { db, auth } = require("../firebase/index.firebase");
 const axios = require("axios");
 const countryList = require("country-list");
@@ -40,6 +46,15 @@ const SignUpForm = () => {
     "Ridge View Residential College",
     "Off Campus",
   ];
+  const [open, setOpen] = useState(true);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   function toTitleCase(str) {
     return str.replace(/\w\S*/g, function (txt) {
@@ -202,6 +217,7 @@ const SignUpForm = () => {
           type="text"
           onChange={(e) => setName(toTitleCase(e.target.value))}
           autoFocus
+          maxLength="17"
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -294,11 +310,10 @@ const SignUpForm = () => {
         <TextField
           variant="outlined"
           margin="normal"
-          required
           fullWidth
           id="nusmods"
           name="nusmods"
-          label="NUSMods URL"
+          label="NUSMods Timetable URL (Optional)"
           type="url"
           placeholder="https://nusmods.com/timetable/..."
           onChange={(e) => setNusmods(e.target.value.toUpperCase())}
@@ -320,6 +335,26 @@ const SignUpForm = () => {
           Already have an account? Log in here
         </Link>
       </Grid>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle id="alert-dialog-title">
+          {"NUSMods Timetable URL"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            <Alert variant="filled" severity="info">
+              Please follow this instruction to copy your NUSMods Timetable URL
+            </Alert>
+          </DialogContentText>
+          <div style={{ textAlign: "center" }}>
+            <img src="https://media.giphy.com/media/J2DABVXvriVVYKJ4W3/giphy.gif" />
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} variant="contained" color="primary">
+            I understand
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Grid>
   );
 };
