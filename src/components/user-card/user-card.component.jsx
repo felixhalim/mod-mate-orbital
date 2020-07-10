@@ -73,7 +73,7 @@ const UserCard = (props) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions style={{ marginBottom: "1vh" }}>
           <Grid container alignItems="center">
             <Grid container align="center" item xs={4}>
               <Grid item xs={12}>
@@ -184,36 +184,46 @@ const UserCard = (props) => {
               title={props.name}
             />
             <CardContent>
-              <Grid container spacing={1}>
-                <Grid item xs={12}>
-                  <Typography align="center" gutterBottom variant="h5">
-                    {props.name}
-                  </Typography>
+              <Grid container>
+                <Grid item xs={1} />
+                <Grid container item xs={10} spacing={1}>
+                  <Grid item xs={12}>
+                    <Typography align="center" gutterBottom variant="h5">
+                      {props.name}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Timeline
+                      fontSize="inherit"
+                      style={{ marginRight: "1vw" }}
+                    />
+                    <Typography align="left" variant="subtitle">
+                      {props.career || "Unknown"}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Book fontSize="inherit" style={{ marginRight: "1vw" }} />
+                    <Typography align="left" variant="subtitle">
+                      {props.major || "Unknown"}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Language
+                      fontSize="inherit"
+                      style={{ marginRight: "1vw" }}
+                    />
+                    <Typography align="left" variant="subtitle">
+                      {props.nationality || "Unknown"}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Home fontSize="inherit" style={{ marginRight: "1vw" }} />
+                    <Typography align="left" variant="subtitle">
+                      {props.residence || "Unknown"}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <Timeline fontSize="inherit" style={{ marginRight: "1vw" }} />
-                  <Typography align="left" variant="subtitle">
-                    {props.career || "Unknown"}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Book fontSize="inherit" style={{ marginRight: "1vw" }} />
-                  <Typography align="left" variant="subtitle">
-                    {props.major || "Unknown"}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Language fontSize="inherit" style={{ marginRight: "1vw" }} />
-                  <Typography align="left" variant="subtitle">
-                    {props.nationality || "Unknown"}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Home fontSize="inherit" style={{ marginRight: "1vw" }} />
-                  <Typography align="left" variant="subtitle">
-                    {props.residence || "Unknown"}
-                  </Typography>
-                </Grid>
+                <Grid item xs={1} />
               </Grid>
             </CardContent>
             <CardActions
@@ -221,7 +231,7 @@ const UserCard = (props) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                margin: "1vh",
+                marginBottom: "3vh",
               }}
               disableSpacing
             >
