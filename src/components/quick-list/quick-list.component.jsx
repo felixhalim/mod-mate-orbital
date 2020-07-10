@@ -79,32 +79,39 @@ const QuickList = () => {
           paddingBottom: "5vh",
         }}
       >
-        <Grid container item xs={9}>
-          <Box width={1} border="solid #372f6c 2px" borderRadius="20px">
-            <Grid container item xs={12}>
-              {modTaken.map((mod) => (
-                <Grid item xs={2}>
-                  <Button
-                    variant="contained"
-                    color={mod === selectedMod ? "secondary" : "primary"}
-                    onClick={(e) => {
-                      setSelectedMod(mod);
-                      getUsers();
-                    }}
-                    style={{
-                      marginTop: "1vh",
-                      marginBottom: "1vh",
-                      borderRadius: "20px",
-                      width: "7vw",
-                    }}
-                    size="medium"
-                  >
-                    {mod}
-                  </Button>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+        <Grid
+          container
+          item
+          xs={9}
+          style={{
+            border: "solid #372f6c 2px",
+            borderRadius: "20px",
+            padding: "1vh",
+          }}
+        >
+          <Grid container item xs={12}>
+            {modTaken.map((mod) => (
+              <Grid item xs={2}>
+                <Button
+                  variant="contained"
+                  color={mod === selectedMod ? "secondary" : "primary"}
+                  onClick={(e) => {
+                    setSelectedMod(mod);
+                    getUsers();
+                  }}
+                  style={{
+                    marginTop: "1vh",
+                    marginBottom: "1vh",
+                    borderRadius: "20px",
+                    width: "7vw",
+                  }}
+                  size="medium"
+                >
+                  {mod}
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
         <Grid item xs={3}>
           <TextField
