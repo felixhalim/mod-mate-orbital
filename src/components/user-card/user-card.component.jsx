@@ -35,9 +35,17 @@ const UserCard = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const truncate = (str, n) => {
+    return str.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
+
+  const maxTextLength = 10;
+
   return (
     <>
       <Card
+        alt={props.name}
         style={{
           maxWidth: 345,
           borderRadius: "20px",
@@ -48,6 +56,7 @@ const UserCard = (props) => {
         <CardActionArea
           href={props.isFriend && `chat/${props.username}`}
           onClick={!props.isFriend && handleOpen}
+          alt={props.name}
         >
           <CardMedia
             style={{
@@ -60,7 +69,7 @@ const UserCard = (props) => {
           />
           <CardContent>
             <Typography align="center" variant="h5">
-              {props.name}
+              {truncate(props.name, maxTextLength)}
             </Typography>
           </CardContent>
         </CardActionArea>
