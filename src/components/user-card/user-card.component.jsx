@@ -192,35 +192,53 @@ const UserCard = (props) => {
                       {props.name}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Timeline
-                      fontSize="inherit"
-                      style={{ marginRight: "1vw" }}
-                    />
-                    <Typography align="left" variant="subtitle">
-                      {props.career || "Unknown"}
-                    </Typography>
+                  <Grid container item xs={12}>
+                    <Grid item xs={1}>
+                      <Timeline
+                        fontSize="inherit"
+                        style={{ marginRight: "1vw" }}
+                      />
+                    </Grid>
+                    <Grid item xs={11}>
+                      <Typography align="left" variant="subtitle">
+                        {props.career || "Unknown"}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Book fontSize="inherit" style={{ marginRight: "1vw" }} />
-                    <Typography align="left" variant="subtitle">
-                      {props.major || "Unknown"}
-                    </Typography>
+                  <Grid container item xs={12}>
+                    <Grid item xs={1}>
+                      <Book fontSize="inherit" style={{ marginRight: "1vw" }} />
+                    </Grid>{" "}
+                    <Grid item xs={11}>
+                      <Typography align="left" variant="subtitle">
+                        {props.major || "Unknown"}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Language
-                      fontSize="inherit"
-                      style={{ marginRight: "1vw" }}
-                    />
-                    <Typography align="left" variant="subtitle">
-                      {props.nationality || "Unknown"}
-                    </Typography>
+                  <Grid container item xs={12}>
+                    {" "}
+                    <Grid item xs={1}>
+                      <Language
+                        fontSize="inherit"
+                        style={{ marginRight: "1vw" }}
+                      />
+                    </Grid>{" "}
+                    <Grid item xs={11}>
+                      <Typography align="left" variant="subtitle">
+                        {props.nationality || "Unknown"}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Home fontSize="inherit" style={{ marginRight: "1vw" }} />
-                    <Typography align="left" variant="subtitle">
-                      {props.residence || "Unknown"}
-                    </Typography>
+                  <Grid container item xs={12}>
+                    {" "}
+                    <Grid item xs={1}>
+                      <Home fontSize="inherit" style={{ marginRight: "1vw" }} />
+                    </Grid>{" "}
+                    <Grid item xs={11}>
+                      <Typography align="left" variant="subtitle">
+                        {props.residence || "Unknown"}
+                      </Typography>
+                    </Grid>
                   </Grid>
                 </Grid>
                 <Grid item xs={1} />
