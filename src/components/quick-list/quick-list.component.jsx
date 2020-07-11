@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserCard from "../user-card/user-card.component";
 import { useEffect } from "react";
-import { Grid, Button, TextField, Box } from "@material-ui/core/";
+import { Grid, Button, TextField } from "@material-ui/core/";
 import Alert from "@material-ui/lab/Alert";
 
 const { db, auth } = require("../../firebase/index.firebase");
