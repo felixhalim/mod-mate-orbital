@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import UserCard from "../user-card/user-card.component";
 import { useEffect } from "react";
-import { Grid, Button, TextField, Box } from "@material-ui/core/";
+import { Grid, Button, TextField } from "@material-ui/core/";
 import Alert from "@material-ui/lab/Alert";
+import "./friend-list.styles.css";
 
 const { db, auth } = require("../../firebase/index.firebase");
 
@@ -82,47 +83,54 @@ const FriendList = () => {
           paddingBottom: "5vh",
         }}
       >
-        <Grid container item xs={9}>
-          <Box width={1} border="solid #372f6c 2px" borderRadius="20px">
-            <Grid container item xs={12}>
-              {modTaken.map((mod) => (
-                <Grid item xs={2}>
-                  <Button
-                    variant="contained"
-                    color={mod === selectedMod ? "secondary" : "primary"}
-                    onClick={(e) => {
-                      setSelectedMod(mod);
-                      getFriends();
-                    }}
-                    style={{
-                      marginTop: "1vh",
-                      marginBottom: "1vh",
-                      borderRadius: "20px",
-                      width: "7vw",
-                    }}
-                    size="medium"
-                  >
-                    {mod}
-                  </Button>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+        <Grid
+          container
+          item
+          xs={9}
+          style={{
+            border: "solid #372f6c 2px",
+            borderRadius: "20px",
+            padding: "1vh",
+          }}
+        >
+          <Grid container item xs={12}>
+            {modTaken.map((mod) => (
+              <Grid item xs={2}>
+                <Button
+                  variant="contained"
+                  color={mod === selectedMod ? "secondary" : "primary"}
+                  onClick={(e) => {
+                    setSelectedMod(mod);
+                    getFriends();
+                  }}
+                  style={{
+                    marginTop: "1vh",
+                    marginBottom: "1vh",
+                    borderRadius: "20px",
+                    width: "7vw",
+                  }}
+                  size="medium"
+                >
+                  {mod}
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
         <Grid item xs={3}>
-          <TextField
-            fullWidth
-            variant="filled"
-            label="Filter by name"
-            style={{
-              margin: "1vh",
-              border: "solid #372f6c 2px",
-              borderRadius: "20px",
-            }}
-            size="small"
-            color="primary"
-            onChange={(e) => setFilter(e.target.value.toLowerCase())}
-          />
+          <div className="FilterField">
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="Filter by name"
+              style={{
+                margin: "1vh",
+              }}
+              size="small"
+              color="primary"
+              onChange={(e) => setFilter(e.target.value.toLowerCase())}
+            />{" "}
+          </div>
         </Grid>
       </Grid>
       <Grid container item xs={12} spacing={2}>

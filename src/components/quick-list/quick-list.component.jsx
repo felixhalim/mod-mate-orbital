@@ -3,6 +3,7 @@ import UserCard from "../user-card/user-card.component";
 import { useEffect } from "react";
 import { Grid, Button, TextField } from "@material-ui/core/";
 import Alert from "@material-ui/lab/Alert";
+import "./quick-list.styles.css";
 
 const { db, auth } = require("../../firebase/index.firebase");
 
@@ -114,19 +115,19 @@ const QuickList = () => {
           </Grid>
         </Grid>
         <Grid item xs={3}>
-          <TextField
-            fullWidth
-            variant="filled"
-            label="Filter by name"
-            style={{
-              margin: "1vh",
-              border: "solid #372f6c 2px",
-              borderRadius: "20px",
-            }}
-            size="small"
-            color="primary"
-            onChange={(e) => setFilter(e.target.value.toLowerCase())}
-          />
+          <div className="FilterField">
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="Filter by name"
+              style={{
+                margin: "1vh",
+              }}
+              size="small"
+              color="primary"
+              onChange={(e) => setFilter(e.target.value.toLowerCase())}
+            />
+          </div>
         </Grid>
       </Grid>
       <Grid container item xs={12} spacing={2}>
