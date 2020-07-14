@@ -135,8 +135,8 @@ const QuickList = () => {
           <>
             <Grid item xs={12}>
               <Alert variant="filled" severity="success">
-                There are {users.length} users are taking {selectedMod}{" "}
-                currently
+                There {users.length === 1 ? "is" : "are"} {users.length} user
+                {users.length > 1 ? "s " : " "} taking {selectedMod} currently
               </Alert>
             </Grid>
             {users.map((user) =>
@@ -167,7 +167,7 @@ const QuickList = () => {
         ) : (
           <Grid item xs={12}>
             <Alert variant="filled" severity="error">
-              Sorry, there are no user taking {selectedMod} currently :(
+              Sorry, there is no user taking {selectedMod} currently :(
             </Alert>
           </Grid>
         )}

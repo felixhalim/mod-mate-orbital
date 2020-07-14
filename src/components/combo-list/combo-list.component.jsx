@@ -81,9 +81,9 @@ const ComboList = () => {
           {users.length !== 0 ? (
             <Grid item xs={12}>
               <Alert variant="filled" severity="success">
-                There {users.length === 1 ? "is" : "are"} {users.length} users
-                are taking {selectedMod.map((mod) => mod + " ")}
-                currently
+                There {users.length === 1 ? "is" : "are"} {users.length} user
+                {users.length > 1 ? "s " : " "} taking{" "}
+                {selectedMod.map((mod) => mod + " ")} currently
               </Alert>
             </Grid>
           ) : selectedMod.length === 0 ? (
