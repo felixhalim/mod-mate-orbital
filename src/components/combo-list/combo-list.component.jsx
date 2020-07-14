@@ -37,6 +37,13 @@ const ComboList = () => {
       });
   };
 
+  const containsExact = (mods) => {
+    for (let mod of autoCompleteSelectedMod) {
+      if (!mods.includes(mod)) return false;
+    }
+    return true;
+  };
+
   const getUsers = () => {
     if (autoCompleteSelectedMod.length === 0) return setUsers([]);
     db.collection("user")
@@ -45,7 +52,11 @@ const ComboList = () => {
       .then((data) => {
         let newUsers = [];
         data.forEach((doc) => {
-          if (doc.id !== username && !friends.includes(doc.data().username))
+          if (
+            doc.id !== username &&
+            !friends.includes(doc.data().username) &&
+            containsExact(doc.data().mods_taken)
+          )
             newUsers.push(doc.data());
         });
         newUsers !== users && setUsers(newUsers);
@@ -70,8 +81,8 @@ const ComboList = () => {
           {users.length !== 0 ? (
             <Grid item xs={12}>
               <Alert variant="filled" severity="success">
-                There are {users.length} users are taking{" "}
-                {selectedMod.map((mod) => mod + ",")}
+                There {users.length === 1 ? "is" : "are"} {users.length} users
+                are taking {selectedMod.map((mod) => mod + " ")}
                 currently
               </Alert>
             </Grid>
@@ -84,8 +95,8 @@ const ComboList = () => {
           ) : (
             <Grid item xs={12}>
               <Alert variant="filled" severity="error">
-                Sorry, there are no user taking
-                {selectedMod.map((mod) => mod + ",")} currently :(
+                Sorry, there is no user taking{" "}
+                {selectedMod.map((mod) => mod + " ")} currently :(
               </Alert>
             </Grid>
           )}
