@@ -241,7 +241,7 @@ const UserCard = (props) => {
                       </Typography>
                     </Grid>
                   </Grid>
-                  {!props.isFriend ? (
+                  {props.isFriend ? (
                     <Grid container item xs={12} justify="center">
                       {props.modulesTaken.map((mod) => (
                         <Chip
