@@ -29,6 +29,10 @@ const UserCard = (props) => {
   const { residence, nationality, major, career, mods_taken } = props.userData;
   const [open, setOpen] = useState(false);
 
+  const handleAddFriend = () => {
+    alert("Add friend!");
+  };
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -54,11 +58,7 @@ const UserCard = (props) => {
           backgroundColor: "#372f6c",
         }}
       >
-        <CardActionArea
-          href={props.isFriend && `chat/${props.username}`}
-          onClick={!props.isFriend && handleOpen}
-          alt={props.name}
-        >
+        <CardActionArea onClick={handleOpen} alt={props.name}>
           <CardMedia
             style={{
               height: 0,
@@ -117,7 +117,13 @@ const UserCard = (props) => {
                   "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
               }}
             >
-              <IconButton>
+              <IconButton
+                onClick={() =>
+                  props.isFriend
+                    ? window.location.replace(`chat/${props.username}`)
+                    : handleAddFriend()
+                }
+              >
                 {props.isFriend ? (
                   <Chat fontSize="large" />
                 ) : (
@@ -273,8 +279,13 @@ const UserCard = (props) => {
                 size="medium"
                 color="secondary"
                 startIcon={props.isFriend ? <Chat /> : <PersonAdd />}
+                onClick={() =>
+                  props.isFriend
+                    ? window.location.replace(`chat/${props.username}`)
+                    : handleAddFriend()
+                }
               >
-                Add as Friend
+                {props.isFriend ? "Chat" : "Add as Friend"}
               </Button>
             </CardActions>
           </Card>
