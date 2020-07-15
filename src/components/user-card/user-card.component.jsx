@@ -13,6 +13,7 @@ import {
   Backdrop,
   Fade,
   Button,
+  Chip,
 } from "@material-ui/core";
 import {
   Timeline,
@@ -25,7 +26,7 @@ import {
 import "../particulars/cards.styles.css";
 
 const UserCard = (props) => {
-  const { residence, nationality, major, career } = props.userData;
+  const { residence, nationality, major, career, mods_taken } = props.userData;
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -240,6 +241,20 @@ const UserCard = (props) => {
                       </Typography>
                     </Grid>
                   </Grid>
+                  {!props.isFriend ? (
+                    <Grid container item xs={12} justify="center">
+                      {props.modulesTaken.map((mod) => (
+                        <Chip
+                          color="default"
+                          size="small"
+                          label={mod}
+                          style={{ margin: "0.5vh" }}
+                        />
+                      ))}
+                    </Grid>
+                  ) : (
+                    <div></div>
+                  )}
                 </Grid>
                 <Grid item xs={1} />
               </Grid>

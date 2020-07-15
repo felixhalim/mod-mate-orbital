@@ -155,6 +155,7 @@ const FriendList = () => {
                     username={friend.username}
                     userData={userData}
                     isFriend={friends.includes(friend.username)}
+                    modulesTaken={friend.mods_taken}
                   />
                 </Grid>
               ) : (
