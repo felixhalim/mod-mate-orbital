@@ -31,7 +31,7 @@ const ModuleList = () => {
       await axios
         .get(`https://api.nusmods.com/v2/2020-2021/modules/${mod}.json`) // eslint-disable-next-line
         .then(function (response) {
-          if (response.status === 200) {
+          if (response.status === 200 && !modulesTaken.includes(mod[0])) {
             modulesTaken.push(mod[0]);
           }
         })

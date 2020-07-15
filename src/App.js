@@ -11,6 +11,7 @@ import Profile from "./pages/profile/profile.pages";
 import Header from "./components/header/header.component";
 import Friends from "./pages/friends/friends.pages";
 import QuickMatch from "./pages/quickmatch/quickmatch.pages";
+import ComboMatch from "./pages/combomatch/combomatch.pages";
 import ChatPage from "./pages/chat/chat-page.component";
 import "./App.css";
 
@@ -39,7 +40,7 @@ const App = () => (
             <Route path="/" component={Header} />
           </Switch>
           <Route path="/quick-match" component={QuickMatch} />
-          <Route path="/combo-match" />
+          <Route path="/combo-match" component={ComboMatch} />
           <Route path="/friends" component={Friends} />
           <Route path="/inbox" />
           <Route path="/profile" component={Profile} />

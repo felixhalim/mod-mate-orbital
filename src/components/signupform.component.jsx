@@ -93,7 +93,7 @@ const SignUpForm = () => {
       await axios
         .get(`https://api.nusmods.com/v2/2020-2021/modules/${mod}.json`) // eslint-disable-next-line
         .then(function (response) {
-          if (response.status === 200) {
+          if (response.status === 200 && !modsTaken.includes(mod[0])) {
             modsTaken.push(mod[0]);
           }
         })
