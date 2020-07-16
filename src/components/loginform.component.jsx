@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Grid, Typography, TextField, Button, Link } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  Link,
+  CircularProgress,
+} from "@material-ui/core";
 const { auth } = require("../firebase/index.firebase");
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const isEmpty = (string) => {
     if (string.trim() === "") return true;
@@ -25,16 +33,22 @@ const LoginForm = () => {
   };
 
   const validateSignInData = () => {
+    let error = true;
     if (isEmpty(email) || isEmpty(password)) {
       alert("Check your Form!");
     } else if (!isEmail(email) || !isNUSEmail(email)) {
       alert("Must be valid email address");
+    } else {
+      error = false;
     }
-
-    return;
+    if (error) {
+      setLoading(false);
+      return;
+    }
   };
   const handleSignIn = (event) => {
     event.preventDefault();
+    setLoading(true);
     validateSignInData();
 
     auth
@@ -53,7 +67,8 @@ const LoginForm = () => {
         }
         console.log(error);
         return;
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -98,8 +113,12 @@ const LoginForm = () => {
           variant="contained"
           color="primary"
           onClick={handleSignIn}
+          disabled={loading}
         >
           Sign In
+          {loading && (
+            <CircularProgress size={20} style={{ position: "absolute" }} />
+          )}
         </Button>
       </Grid>
       <Grid item xs={12}>
