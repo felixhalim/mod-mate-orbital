@@ -120,7 +120,7 @@ const UserCard = (props) => {
               <IconButton
                 onClick={() =>
                   props.isFriend
-                    ? window.location.replace(`chat/${props.username}`)
+                    ? window.location.replace(`friends/${props.username}`)
                     : handleAddFriend()
                 }
               >
@@ -281,7 +281,7 @@ const UserCard = (props) => {
                 startIcon={props.isFriend ? <Chat /> : <PersonAdd />}
                 onClick={() =>
                   props.isFriend
-                    ? window.location.replace(`chat/${props.username}`)
+                    ? window.location.replace(`friends/${props.username}`)
                     : handleAddFriend()
                 }
               >

@@ -3,7 +3,7 @@ import UserCard from "../user-card/user-card.component";
 import { useEffect } from "react";
 import { Grid, Button, TextField } from "@material-ui/core/";
 import Alert from "@material-ui/lab/Alert";
-import "./friend-list.styles.css";
+import "./friends-list.styles.css";
 
 const { db, auth } = require("../../firebase/index.firebase");
 

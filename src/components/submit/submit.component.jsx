@@ -15,8 +15,8 @@ const Submit = ({ addModules }) => {
         className="submit-txt"
         type="text"
         name=""
-        value={url}
-        placeholder="Paste your NUSMODS Link here"
+        value={url.toUpperCase()}
+        placeholder="Paste your NUSMODS Link here or input manually with an ampersand separated value"
         onChange={(e) => setUrl(e.target.value)}
       />
       <input

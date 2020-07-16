@@ -41,7 +41,8 @@ const App = () => (
           </Switch>
           <Route path="/quick-match" component={QuickMatch} />
           <Route path="/combo-match" component={ComboMatch} />
-          <Route path="/friends" component={Friends} />
+          <Route path="/friends" exact component={Friends} />
+          <Route path="/friends/:id" component={ChatPage} />
           <Route path="/inbox" />
           <Route path="/profile" component={Profile} />
           <Route path="/chat-page" component={ChatPage} />
