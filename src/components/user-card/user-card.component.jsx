@@ -13,6 +13,7 @@ import {
   Backdrop,
   Fade,
   Button,
+  Chip,
 } from "@material-ui/core";
 import {
   Timeline,
@@ -25,8 +26,12 @@ import {
 import "../particulars/cards.styles.css";
 
 const UserCard = (props) => {
-  const { residence, nationality, major, career } = props.userData;
+  const { residence, nationality, major, career, mods_taken } = props.userData;
   const [open, setOpen] = useState(false);
+
+  const handleAddFriend = () => {
+    alert("Add friend!");
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -53,11 +58,7 @@ const UserCard = (props) => {
           backgroundColor: "#372f6c",
         }}
       >
-        <CardActionArea
-          href={props.isFriend && `chat/${props.username}`}
-          onClick={!props.isFriend && handleOpen}
-          alt={props.name}
-        >
+        <CardActionArea onClick={handleOpen} alt={props.name}>
           <CardMedia
             style={{
               height: 0,
@@ -116,7 +117,13 @@ const UserCard = (props) => {
                   "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
               }}
             >
-              <IconButton>
+              <IconButton
+                onClick={() =>
+                  props.isFriend
+                    ? window.location.replace(`chat/${props.username}`)
+                    : handleAddFriend()
+                }
+              >
                 {props.isFriend ? (
                   <Chat fontSize="large" />
                 ) : (
@@ -240,6 +247,20 @@ const UserCard = (props) => {
                       </Typography>
                     </Grid>
                   </Grid>
+                  {props.isFriend ? (
+                    <Grid container item xs={12} justify="center">
+                      {props.modulesTaken.map((mod) => (
+                        <Chip
+                          color="default"
+                          size="small"
+                          label={mod}
+                          style={{ margin: "0.5vh" }}
+                        />
+                      ))}
+                    </Grid>
+                  ) : (
+                    <div></div>
+                  )}
                 </Grid>
                 <Grid item xs={1} />
               </Grid>
@@ -258,8 +279,13 @@ const UserCard = (props) => {
                 size="medium"
                 color="secondary"
                 startIcon={props.isFriend ? <Chat /> : <PersonAdd />}
+                onClick={() =>
+                  props.isFriend
+                    ? window.location.replace(`chat/${props.username}`)
+                    : handleAddFriend()
+                }
               >
-                Add as Friend
+                {props.isFriend ? "Chat" : "Add as Friend"}
               </Button>
             </CardActions>
           </Card>

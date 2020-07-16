@@ -73,7 +73,7 @@ const ComboList = () => {
         xs={12}
         style={{
           paddingTop: "5vh",
-          paddingBottom: "5vh",
+          paddingBottom: "1vh",
         }}
         spacing={1}
       >
@@ -147,23 +147,25 @@ const ComboList = () => {
           )}
         />
       </Grid>
-      <Grid item xs={2}>
-        <Button
-          fullWidth
-          variant="contained"
-          color={"secondary"}
-          onClick={(e) => {
-            setSelectedMod(autoCompleteSelectedMod);
-            getUsers();
-          }}
-          style={{
-            borderRadius: "20px",
-            margin: "1vh",
-          }}
-          size="medium"
-        >
-          Start
-        </Button>
+      <Grid container item xs={2} spacing={1}>
+        <Grid item xs={12}>
+          <Button
+            fullWidth
+            variant="contained"
+            color={"secondary"}
+            onClick={(e) => {
+              setSelectedMod(autoCompleteSelectedMod);
+              getUsers();
+            }}
+            style={{
+              borderRadius: "20px",
+              margin: "1vh",
+            }}
+            size="medium"
+          >
+            Start
+          </Button>
+        </Grid>
       </Grid>
       <Grid
         container
@@ -171,7 +173,7 @@ const ComboList = () => {
         xs={12}
         spacing={2}
         style={{
-          paddingTop: "2vh",
+          paddingTop: "5vh",
           paddingBottom: "5vh",
         }}
       >
