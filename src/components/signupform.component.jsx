@@ -14,7 +14,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  IconButton,
+  CircularProgress,
 } from "@material-ui/core";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import Alert from "@material-ui/lab/Alert";
 const { db, auth } = require("../firebase/index.firebase");
 const axios = require("axios");
@@ -47,6 +50,7 @@ const SignUpForm = () => {
     "Off Campus",
   ];
   const [open, setOpen] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -131,12 +135,12 @@ const SignUpForm = () => {
 
   const handleSignUp = (event) => {
     event.preventDefault();
+    setLoading(true);
+    let error = true;
     if (isEmpty(email)) {
       alert("Email must not be empty");
-      return;
     } else if (!isEmail(email) || !isNUSEmail(email)) {
       alert("You must sign up using NUS email (@u.nus.edu)");
-      return;
     } else if (
       isEmpty(name) ||
       isEmpty(username) ||
@@ -144,14 +148,21 @@ const SignUpForm = () => {
       isEmpty(password)
     ) {
       alert("We detected error :( please check your form");
-      return;
     } else if (password !== confirm) {
       alert("Please check your confirmation password");
-      return;
+    } else {
+      error = false;
     }
 
     if (username.includes("/")) {
       alert("Username cannot contains /");
+      error = true;
+    } else {
+      if (!error) error = false;
+    }
+
+    if (error) {
+      setLoading(false);
       return;
     }
 
@@ -191,7 +202,8 @@ const SignUpForm = () => {
             });
           return;
         }
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -317,6 +329,13 @@ const SignUpForm = () => {
           type="url"
           placeholder="https://nusmods.com/timetable/..."
           onChange={(e) => setNusmods(e.target.value.toUpperCase())}
+          InputProps={{
+            endAdornment: (
+              <IconButton onClick={handleClickOpen}>
+                <HelpOutlineIcon />
+              </IconButton>
+            ),
+          }}
         />
       </Grid>
       <Grid item xs={12}>
@@ -326,8 +345,12 @@ const SignUpForm = () => {
           fullWidth
           variant="contained"
           color="primary"
+          disabled={loading}
         >
           Sign Up
+          {loading && (
+            <CircularProgress size={20} style={{ position: "absolute" }} />
+          )}
         </Button>
       </Grid>
       <Grid item xs={12}>
@@ -346,7 +369,10 @@ const SignUpForm = () => {
             </Alert>
           </DialogContentText>
           <div style={{ textAlign: "center" }}>
-            <img src="https://media.giphy.com/media/J2DABVXvriVVYKJ4W3/giphy.gif" />
+            <img
+              src="https://media.giphy.com/media/J2DABVXvriVVYKJ4W3/giphy.gif"
+              alt="NUSMods Timetable URL Copy + Paste Guide"
+            />
           </div>
         </DialogContent>
         <DialogActions>
