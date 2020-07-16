@@ -61,7 +61,9 @@ const Header = () => {
             <i class="fas fa-bars" id="btn"></i>
             <i class="fas fa-times" id="cancel"></i>
           </label>
-          <h1 href="/quick-match">ModMate</h1>
+          <Link to="/profile">
+            <h1 className="logo-style">ModMate</h1>
+          </Link>
           <ul>
             <li>
               <Link to="/quick-match" activeClassName="active">

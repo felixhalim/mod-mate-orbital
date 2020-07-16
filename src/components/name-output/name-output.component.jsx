@@ -19,6 +19,12 @@ const NameOutput = () => {
       setMyName(doc.data().name);
     });
 
+  function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
   return (
     <EditName
       text={content}
@@ -34,7 +40,7 @@ const NameOutput = () => {
         name="content"
         placeholder="Press enter to save"
         value={content}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={(e) => setContent(toTitleCase(e.target.value))}
       />
     </EditName>
   );
