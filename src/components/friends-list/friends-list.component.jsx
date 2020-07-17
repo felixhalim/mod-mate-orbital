@@ -36,40 +36,35 @@ const FriendList = () => {
       });
   };
 
-  const getFriends = () => {
+  const getFriends = (selectedMod) => {
+    let newUsers = [];
     db.collection("user")
       .where("mods_taken", "array-contains", selectedMod)
       .get()
       .then((data) => {
-        let newUsers = [];
         data.forEach((doc) => {
           if (doc.id !== username && friends.includes(doc.data().username)) {
             newUsers.push(doc.data());
           }
         });
+      })
+      .finally(async () => {
+        for (let usr of newUsers) {
+          await db
+            .collection(`/user/${usr.username}/private_info/`)
+            .get()
+            .then((data) => {
+              data.forEach((doc) => {
+                usr.tele_id = doc.data().telegram_id;
+              });
+            });
+        }
         newUsers !== users && setUsers(newUsers);
+        setSelectedMod(selectedMod);
       });
   };
 
-  useEffect(() => {
-    function getFriends() {
-      db.collection("user")
-        .where("mods_taken", "array-contains", selectedMod)
-        .get()
-        .then((data) => {
-          let newUsers = [];
-          data.forEach((doc) => {
-            if (doc.id !== username && friends.includes(doc.data().username)) {
-              newUsers.push(doc.data());
-            }
-          });
-          newUsers !== users && setUsers(newUsers);
-        });
-    }
-
-    getFriends();
-  }, [selectedMod, username, users]);
-
+  useEffect(() => {}, [users]);
   useEffect(getUserData, []);
 
   return (
@@ -139,8 +134,7 @@ const FriendList = () => {
               variant="contained"
               color={mod === selectedMod ? "secondary" : "primary"}
               onClick={(e) => {
-                setSelectedMod(mod);
-                getFriends();
+                getFriends(mod);
               }}
               style={{
                 marginTop: "1vh",
@@ -179,6 +173,7 @@ const FriendList = () => {
                 userData={userData}
                 isFriend={friends.includes(friend.username)}
                 modulesTaken={friend.mods_taken}
+                tele_id={friend.tele_id}
               />
             </Grid>
           ) : (
