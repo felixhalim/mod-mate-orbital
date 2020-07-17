@@ -29,12 +29,6 @@ const ChatInfo = (props) => {
       .then((data) => {
         data.forEach((doc) => {
           setTeleID(doc.data().telegram_id);
-        });
-      });
-    db.collection(`/user/${props.friendName}/private_info/`)
-      .get()
-      .then((data) => {
-        data.forEach((doc) => {
           setMail(doc.data().email);
         });
       });
@@ -83,10 +77,7 @@ const ChatInfo = (props) => {
           <p className="world">{world}</p>
         </div>
         <div className="telegram--icon">
-          <a
-            href={`https://web.telegram.org/#/im?p=@${teleID}`}
-            target="_blank"
-          >
+          <a href={`https://t.me/${teleID}`} target="_blank">
             <img
               id="telegram--size"
               src="https://i.pinimg.com/originals/99/f0/3f/99f03fdee90d871d3d1e718c82feb8be.png"

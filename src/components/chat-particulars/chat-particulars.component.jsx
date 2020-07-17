@@ -13,15 +13,7 @@ const ChatParticulars = (props) => {
       .get()
       .then((doc) => {
         setFriendImageUrl(doc.data().avatar);
-      });
-    db.doc(`/user/${props.friendName}`)
-      .get()
-      .then((doc) => {
         setFriendName(doc.data().name);
-      });
-    db.doc(`/user/${props.friendName}`)
-      .get()
-      .then((doc) => {
         setFriendBio(doc.data().bio);
       });
   };
