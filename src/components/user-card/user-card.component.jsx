@@ -22,11 +22,12 @@ import {
   Chat,
   Book,
   Home,
+  Telegram,
 } from "@material-ui/icons";
 import "../particulars/cards.styles.css";
 
 const UserCard = (props) => {
-  const { residence, nationality, major, career, mods_taken } = props.userData;
+  const { residence, nationality, major, career } = props.userData;
   const [open, setOpen] = useState(false);
 
   const handleAddFriend = () => {
@@ -272,7 +273,6 @@ const UserCard = (props) => {
                 justifyContent: "center",
                 marginBottom: "3vh",
               }}
-              disableSpacing
             >
               <Button
                 variant="contained"
@@ -287,6 +287,19 @@ const UserCard = (props) => {
               >
                 {props.isFriend ? "Chat" : "Add as Friend"}
               </Button>
+              {props.isFriend && (
+                <Button
+                  variant="contained"
+                  size="medium"
+                  style={{ color: "white", backgroundColor: "#4DACDB" }}
+                  startIcon={<Telegram />}
+                  onClick={() =>
+                    window.open(`https://t.me/${props.tele_id}`, "_blank")
+                  }
+                >
+                  Chat via Telegram
+                </Button>
+              )}
             </CardActions>
           </Card>
         </Fade>
