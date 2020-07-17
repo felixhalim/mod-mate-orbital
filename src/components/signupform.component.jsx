@@ -86,16 +86,15 @@ const SignUpForm = () => {
 
   const writeToDb = async () => {
     let modules = nusmods.split("&");
-    let mod;
     let modsTaken = [];
-    for (mod of modules) {
+    for (let mod of modules) {
       if (mod.includes("?")) {
         mod = mod.split("?");
         mod = mod[1];
       }
       mod = mod.split("=", 1);
       await axios
-        .get(`https://api.nusmods.com/v2/2020-2021/modules/${mod}.json`) // eslint-disable-next-line
+        .get(`https://api.nusmods.com/v2/2020-2021/modules/${mod}.json`)
         .then(function (response) {
           if (response.status === 200 && !modsTaken.includes(mod[0])) {
             modsTaken.push(mod[0]);

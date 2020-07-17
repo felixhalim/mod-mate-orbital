@@ -16,7 +16,9 @@ const Stranger = () => {
       <div className="error">
         <h2 className="stranger-header">
           Hi there!
-          <span> &#x1f44b; </span>
+          <span role="img" aria-label="wave">
+            &#x1f44b;
+          </span>
         </h2>
         <p className="stranger-message">
           If you get stuck in this page, there might have been an issue while

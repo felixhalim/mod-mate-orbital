@@ -94,6 +94,7 @@ const Header = () => {
               className="logout-button"
               src="https://www.materialui.co/materialIcons/action/exit_to_app_white_48x48.png"
               onClick={logout}
+              alt="sign-out"
             />
           </ul>
         </nav>
