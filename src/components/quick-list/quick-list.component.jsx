@@ -35,7 +35,7 @@ const QuickList = () => {
       });
   };
 
-  const getUsers = () => {
+  const getUsers = (selectedMod) => {
     db.collection("user")
       .where("mods_taken", "array-contains", selectedMod)
       .get()
@@ -46,13 +46,11 @@ const QuickList = () => {
             newUsers.push(doc.data());
         });
         newUsers !== users && setUsers(newUsers);
+        setSelectedMod(selectedMod);
       });
   };
 
-  useEffect(() => {
-    getUsers();
-  }, [selectedMod]);
-
+  useEffect(() => {}, [users]);
   useEffect(getUserData, []);
 
   return (
@@ -121,7 +119,7 @@ const QuickList = () => {
               variant="contained"
               color={mod === selectedMod ? "secondary" : "primary"}
               onClick={(e) => {
-                setSelectedMod(mod);
+                getUsers(mod);
               }}
               style={{
                 marginTop: "1vh",

@@ -65,7 +65,6 @@ const FriendList = () => {
   };
 
   useEffect(() => {}, [users]);
-
   useEffect(getUserData, []);
 
   return (

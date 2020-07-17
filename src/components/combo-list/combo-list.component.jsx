@@ -44,10 +44,14 @@ const ComboList = () => {
     return true;
   };
 
-  const getUsers = () => {
-    if (autoCompleteSelectedMod.length === 0) return setUsers([]);
+  const getUsers = (selectedMod) => {
+    if (selectedMod.length === 0) {
+      setSelectedMod([]);
+      setUsers([]);
+      return;
+    }
     db.collection("user")
-      .where("mods_taken", "array-contains-any", autoCompleteSelectedMod)
+      .where("mods_taken", "array-contains-any", selectedMod)
       .get()
       .then((data) => {
         let newUsers = [];
@@ -60,9 +64,11 @@ const ComboList = () => {
             newUsers.push(doc.data());
         });
         newUsers !== users && setUsers(newUsers);
+        setSelectedMod(selectedMod);
       });
   };
 
+  useEffect(() => {}, [users]);
   useEffect(getUserData, []);
 
   return (
@@ -154,8 +160,7 @@ const ComboList = () => {
             variant="contained"
             color={"secondary"}
             onClick={(e) => {
-              setSelectedMod(autoCompleteSelectedMod);
-              getUsers();
+              getUsers(autoCompleteSelectedMod);
             }}
             style={{
               borderRadius: "20px",
