@@ -52,23 +52,8 @@ const FriendList = () => {
   };
 
   useEffect(() => {
-    function getFriends() {
-      db.collection("user")
-        .where("mods_taken", "array-contains", selectedMod)
-        .get()
-        .then((data) => {
-          let newUsers = [];
-          data.forEach((doc) => {
-            if (doc.id !== username && friends.includes(doc.data().username)) {
-              newUsers.push(doc.data());
-            }
-          });
-          newUsers !== users && setUsers(newUsers);
-        });
-    }
-
     getFriends();
-  }, [selectedMod, username, users]);
+  }, [selectedMod]);
 
   useEffect(getUserData, []);
 
@@ -140,7 +125,6 @@ const FriendList = () => {
               color={mod === selectedMod ? "secondary" : "primary"}
               onClick={(e) => {
                 setSelectedMod(mod);
-                getFriends();
               }}
               style={{
                 marginTop: "1vh",
