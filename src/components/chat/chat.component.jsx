@@ -1,42 +1,32 @@
 import React, { useState, useEffect } from "react";
 import "./chat.styles.css";
+import ChitChat from "../chit-chat/chit-chat.component";
 
 const { db, auth } = require("../../firebase/index.firebase");
 
-const Chat = () => {
+const Chat = (props) => {
   let user = auth.currentUser;
   let username = user.displayName;
 
   const [isChatting, setIsChatting] = useState(true);
-  const [friends, setFriends] = useState("anonymous");
   const [friendName, setFriendName] = useState("");
   const [interlocutor, setInterlocutor] = useState("");
 
-  const getUserData = () => {
-    db.collection(`/user/${username}/other_info`)
-      .get()
-      .then((data) => {
-        data.forEach((doc) => {
-          setFriends(doc.data().friends[1]);
-        });
-      });
-  };
-  useEffect(getUserData, []);
-
   const getFriendName = () => {
-    db.doc(`/user/${friends}`)
+    db.doc(`/user/${props.friendName}`)
       .get()
       .then((doc) => {
         setFriendName(doc.data().name);
       });
   };
-  useEffect(getFriendName, [friends]);
+  useEffect(getFriendName, []);
 
   const interlocutorName = () =>
     db
       .doc(`/user/${username}`)
       .get()
       .then((doc) => setInterlocutor(doc.data().name));
+
   useEffect(() => {
     interlocutorName();
   }, []);
@@ -44,6 +34,8 @@ const Chat = () => {
   return (
     <div className="structure">
       {isChatting ? (
+        <ChitChat buddy={props.friendName}></ChitChat>
+      ) : (
         <div className="chat-welcome">
           <span className="chat-title">{`Congratulations, ${interlocutor} !`}</span>
           <span className="chat-desciption">
@@ -52,8 +44,6 @@ const Chat = () => {
             <div className="error-effect">Let's start talking \ (•◡•) /</div>
           </span>
         </div>
-      ) : (
-        <div></div>
       )}
     </div>
   );

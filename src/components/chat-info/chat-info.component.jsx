@@ -3,12 +3,7 @@ import "./chat-info.styles.css";
 
 const { db, auth } = require("../../firebase/index.firebase");
 
-const ChatInfo = () => {
-  let user = auth.currentUser;
-  let username = user.displayName;
-
-  const [friends, setFriends] = useState("anonymous");
-
+const ChatInfo = (props) => {
   const [career, setCareer] = useState("");
   const [major, setMajor] = useState("");
   const [residence, setResidence] = useState("");
@@ -16,59 +11,32 @@ const ChatInfo = () => {
   const [teleID, setTeleID] = useState("");
   const [mail, setMail] = useState("");
 
-  useEffect(() => {
-    db.collection(`/user/${username}/other_info`)
-      .get()
-      .then((data) => {
-        data.forEach((doc) => {
-          setFriends(doc.data().friends[1]);
-        });
-      });
-  }, []);
-
-  useEffect(() => {
-    db.doc(`/user/${friends}`)
+  const getFriendInfo = () => {
+    db.doc(`/user/${props.friendName}`)
       .get()
       .then((doc) => setCareer(doc.data().career));
-  }, [career]);
-
-  useEffect(() => {
-    db.doc(`/user/${friends}`)
+    db.doc(`/user/${props.friendName}`)
       .get()
       .then((doc) => setMajor(doc.data().major));
-  }, [major]);
-
-  useEffect(() => {
-    db.doc(`/user/${friends}`)
+    db.doc(`/user/${props.friendName}`)
       .get()
       .then((doc) => setResidence(doc.data().residence));
-  }, [residence]);
-
-  useEffect(() => {
-    db.doc(`/user/${friends}`)
+    db.doc(`/user/${props.friendName}`)
       .get()
       .then((doc) => setWorld(doc.data().nationality));
-  }, [world]);
-
-  useEffect(() => {
-    db.collection(`/user/${friends}/private_info/`)
+    db.collection(`/user/${props.friendName}/private_info/`)
       .get()
       .then((data) => {
         data.forEach((doc) => {
           setTeleID(doc.data().telegram_id);
-        });
-      });
-  }, [friends, teleID]);
-
-  useEffect(() => {
-    db.collection(`/user/${friends}/private_info/`)
-      .get()
-      .then((data) => {
-        data.forEach((doc) => {
           setMail(doc.data().email);
         });
       });
-  }, [friends, mail]);
+  };
+
+  useEffect(() => {
+    getFriendInfo();
+  }, []);
 
   return (
     <div>
@@ -109,11 +77,13 @@ const ChatInfo = () => {
           <p className="world">{world}</p>
         </div>
         <div className="telegram--icon">
-          <img
-            id="telegram--size"
-            src="https://i.pinimg.com/originals/99/f0/3f/99f03fdee90d871d3d1e718c82feb8be.png"
-            alt="telegram--icon"
-          />
+          <a href={`https://t.me/${teleID}`} target="_blank">
+            <img
+              id="telegram--size"
+              src="https://i.pinimg.com/originals/99/f0/3f/99f03fdee90d871d3d1e718c82feb8be.png"
+              alt="telegram--icon"
+            />
+          </a>
           <p className="telegram">{teleID}</p>
         </div>
         <div className="mail--icon">
