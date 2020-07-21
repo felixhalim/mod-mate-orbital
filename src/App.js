@@ -7,6 +7,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import Login from "./pages/login.pages";
 import SignUp from "./pages/signup.pages";
 import Profile from "./pages/profile/profile.pages";
+import Inbox from "./pages/inbox/inbox.pages";
 // import TestPage from "./pages/testpage.pages";
 import Header from "./components/header/header.component";
 import Friends from "./pages/friends/friends.pages";
@@ -43,7 +44,7 @@ const App = () => (
           <Route path="/combo-match" component={ComboMatch} />
           <Route path="/friends" exact component={Friends} />
           <Route path="/friends/:id" component={ChatPage} />
-          <Route path="/inbox" />
+          <Route path="/inbox" component={Inbox} />
           <Route path="/profile" component={Profile} />
           <Route path="/chat-page" component={ChatPage} />
           {/* <Route path="/test" component={TestPage} exact /> */}

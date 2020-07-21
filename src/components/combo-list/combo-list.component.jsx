@@ -186,6 +186,7 @@ const ComboList = () => {
           user.name.toLowerCase().includes(filter) || filter === "" ? (
             <Grid item xs={3}>
               <UserCard
+                username={user.username}
                 avatar={user.avatar}
                 name={user.name}
                 residence={user.residence}
