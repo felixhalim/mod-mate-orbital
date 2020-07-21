@@ -31,8 +31,9 @@ const UserCard = (props) => {
   const { username, residence, nationality, major, career } = props.userData;
   const [open, setOpen] = useState(false);
 
-  const handleAddFriend = () => {
-    db.collection(`/user/${props.username}/other_info`)
+  const handleAddFriend = async () => {
+    await db
+      .collection(`/user/${props.username}/other_info`)
       .get()
       .then((data) => {
         data.forEach((doc) => {
@@ -41,7 +42,8 @@ const UserCard = (props) => {
           });
         });
       });
-    db.collection(`/user/${username}/other_info`)
+    await db
+      .collection(`/user/${username}/other_info`)
       .get()
       .then((data) => {
         data.forEach((doc) => {
@@ -61,6 +63,9 @@ const UserCard = (props) => {
         data.forEach((doc) => {
           db.doc(`/user/${props.username}/other_info/${doc.id}`).update({
             request_sent: firebase.firestore.FieldValue.arrayRemove(username),
+            request_received: firebase.firestore.FieldValue.arrayRemove(
+              props.username
+            ),
           });
         });
       });
@@ -73,6 +78,7 @@ const UserCard = (props) => {
             request_received: firebase.firestore.FieldValue.arrayRemove(
               props.username
             ),
+            request_sent: firebase.firestore.FieldValue.arrayRemove(username),
           });
         });
       });
