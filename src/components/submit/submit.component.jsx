@@ -16,7 +16,7 @@ const Submit = ({ addModules }) => {
         type="text"
         name=""
         value={url.toUpperCase()}
-        placeholder="Paste your NUSMODS Link here or input manually with an ampersand separated value"
+        placeholder="Paste your NUSMODS Link here or input manually with an ampersand separated value (CS1010&LAK1201&ST2334...)"
         onChange={(e) => setUrl(e.target.value)}
       />
       <input

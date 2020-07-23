@@ -97,7 +97,7 @@ const FriendList = () => {
           ) : (
             <Grid item xs={12}>
               <Alert variant="filled" severity="error">
-                Sorry, there is no user taking {selectedMod} currently :(
+                Sorry, none of your friends is taking {selectedMod} currently :(
               </Alert>
             </Grid>
           )}

@@ -21,15 +21,14 @@ const ModuleList = () => {
   const addModules = async (nusmodules) => {
     let modules = nusmodules.split("&");
     let modulesTaken = [];
-    let mod;
-    for (mod of modules) {
+    for (let mod of modules) {
       if (mod.includes("?")) {
         mod = mod.split("?");
         mod = mod[1];
       }
       mod = mod.split("=", 1);
       await axios
-        .get(`https://api.nusmods.com/v2/2020-2021/modules/${mod}.json`) // eslint-disable-next-line
+        .get(`https://api.nusmods.com/v2/2020-2021/modules/${mod}.json`)
         .then(function (response) {
           if (response.status === 200 && !modulesTaken.includes(mod[0])) {
             modulesTaken.push(mod[0]);

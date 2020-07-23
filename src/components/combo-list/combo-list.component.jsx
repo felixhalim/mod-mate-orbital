@@ -15,6 +15,8 @@ const ComboList = () => {
   const [filter, setFilter] = useState("");
   const [users, setUsers] = useState([]);
   const [friends, setFriends] = useState([]);
+  const [reqReceived, setReqReceived] = useState([]);
+  const [reqSent, setReqSent] = useState([]);
   const [userData, setUserData] = useState([]);
 
   let user = auth.currentUser;
@@ -33,6 +35,8 @@ const ComboList = () => {
       .then((data) => {
         data.forEach((doc) => {
           setFriends(doc.data().friends);
+          setReqReceived(doc.data().request_received);
+          setReqSent(doc.data().request_sent);
         });
       });
   };
@@ -59,6 +63,8 @@ const ComboList = () => {
           if (
             doc.id !== username &&
             !friends.includes(doc.data().username) &&
+            !reqReceived.includes(doc.data().username) &&
+            !reqSent.includes(doc.data().username) &&
             containsExact(doc.data().mods_taken)
           )
             newUsers.push(doc.data());
@@ -186,6 +192,7 @@ const ComboList = () => {
           user.name.toLowerCase().includes(filter) || filter === "" ? (
             <Grid item xs={3}>
               <UserCard
+                username={user.username}
                 avatar={user.avatar}
                 name={user.name}
                 residence={user.residence}

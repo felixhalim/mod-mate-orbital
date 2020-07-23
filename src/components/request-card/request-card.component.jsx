@@ -18,11 +18,10 @@ import {
 import {
   Timeline,
   Language,
-  PersonAdd,
-  Chat,
   Book,
   Home,
-  Telegram,
+  Check,
+  Delete,
 } from "@material-ui/icons";
 import "../particulars/cards.styles.css";
 
@@ -32,30 +31,58 @@ const UserCard = (props) => {
   const { username, residence, nationality, major, career } = props.userData;
   const [open, setOpen] = useState(false);
 
-  const handleAddFriend = () => {
-    db.collection(`/user/${props.username}/other_info`)
+  const handleAddFriend = async () => {
+    await db
+      .collection(`/user/${props.username}/other_info`)
       .get()
       .then((data) => {
         data.forEach((doc) => {
           db.doc(`/user/${props.username}/other_info/${doc.id}`).update({
-            request_received: firebase.firestore.FieldValue.arrayUnion(
-              username
-            ),
+            friends: firebase.firestore.FieldValue.arrayUnion(username),
           });
         });
       });
-    db.collection(`/user/${username}/other_info`)
+    await db
+      .collection(`/user/${username}/other_info`)
       .get()
       .then((data) => {
         data.forEach((doc) => {
           db.doc(`/user/${username}/other_info/${doc.id}`).update({
-            request_sent: firebase.firestore.FieldValue.arrayUnion(
+            friends: firebase.firestore.FieldValue.arrayUnion(props.username),
+          });
+        });
+      });
+    handleRejectFriend();
+  };
+
+  const handleRejectFriend = async () => {
+    await db
+      .collection(`/user/${props.username}/other_info`)
+      .get()
+      .then((data) => {
+        data.forEach((doc) => {
+          db.doc(`/user/${props.username}/other_info/${doc.id}`).update({
+            request_sent: firebase.firestore.FieldValue.arrayRemove(username),
+            request_received: firebase.firestore.FieldValue.arrayRemove(
               props.username
             ),
           });
         });
       });
-    alert(`Request sent to ${props.name}`);
+    await db
+      .collection(`/user/${username}/other_info`)
+      .get()
+      .then((data) => {
+        data.forEach((doc) => {
+          db.doc(`/user/${username}/other_info/${doc.id}`).update({
+            request_received: firebase.firestore.FieldValue.arrayRemove(
+              props.username
+            ),
+            request_sent: firebase.firestore.FieldValue.arrayRemove(username),
+          });
+        });
+      });
+    window.location.replace("/inbox");
   };
 
   const handleOpen = () => {
@@ -101,8 +128,8 @@ const UserCard = (props) => {
         </CardActionArea>
         <CardActions style={{ marginBottom: "1vh" }}>
           <Grid container alignItems="center">
-            <Grid container align="center" item xs={4}>
-              <Grid item xs={12}>
+            <Grid container align="center" item xs={12}>
+              <Grid item xs={3}>
                 <Tooltip
                   title={props.career || "Unknown"}
                   arrow
@@ -115,7 +142,7 @@ const UserCard = (props) => {
                   </IconButton>
                 </Tooltip>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={3}>
                 <Tooltip
                   title={props.nationality || "Unknown"}
                   arrow
@@ -130,34 +157,7 @@ const UserCard = (props) => {
                   </IconButton>
                 </Tooltip>
               </Grid>
-            </Grid>
-            <Grid
-              item
-              align="center"
-              xs={4}
-              style={{
-                backgroundColor: "#8b66e0",
-                borderRadius: "20px",
-                boxShadow:
-                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-              }}
-            >
-              <IconButton
-                onClick={() =>
-                  props.isFriend
-                    ? window.location.replace(`friends/${props.username}`)
-                    : handleAddFriend()
-                }
-              >
-                {props.isFriend ? (
-                  <Chat fontSize="large" />
-                ) : (
-                  <PersonAdd fontSize="large" />
-                )}
-              </IconButton>
-            </Grid>
-            <Grid container align="center" item xs={4}>
-              <Grid item xs={12}>
+              <Grid item xs={3}>
                 <Tooltip
                   title={props.residence || "Unknown"}
                   arrow
@@ -170,12 +170,36 @@ const UserCard = (props) => {
                   </IconButton>
                 </Tooltip>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={3}>
                 <Tooltip title={props.major || "Unknown"} arrow placement="top">
                   <IconButton disableRipple>
                     <Book htmlColor={major === props.major ? "white" : ""} />
                   </IconButton>
                 </Tooltip>
+              </Grid>
+            </Grid>
+            <Grid container item xs={12} spacing={1} style={{ margin: "1vh" }}>
+              <Grid item xs={6}>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  style={{ backgroundColor: "#EC799A" }}
+                  startIcon={<Delete />}
+                  onClick={handleRejectFriend}
+                >
+                  Reject
+                </Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<Check />}
+                  onClick={handleAddFriend}
+                >
+                  Accept
+                </Button>
               </Grid>
             </Grid>
           </Grid>
@@ -240,7 +264,7 @@ const UserCard = (props) => {
                   <Grid container item xs={12}>
                     <Grid item xs={1}>
                       <Book fontSize="inherit" style={{ marginRight: "1vw" }} />
-                    </Grid>{" "}
+                    </Grid>
                     <Grid item xs={11}>
                       <Typography align="left" variant="subtitle">
                         {props.major || "Unknown"}
@@ -248,13 +272,12 @@ const UserCard = (props) => {
                     </Grid>
                   </Grid>
                   <Grid container item xs={12}>
-                    {" "}
                     <Grid item xs={1}>
                       <Language
                         fontSize="inherit"
                         style={{ marginRight: "1vw" }}
                       />
-                    </Grid>{" "}
+                    </Grid>
                     <Grid item xs={11}>
                       <Typography align="left" variant="subtitle">
                         {props.nationality || "Unknown"}
@@ -262,10 +285,9 @@ const UserCard = (props) => {
                     </Grid>
                   </Grid>
                   <Grid container item xs={12}>
-                    {" "}
                     <Grid item xs={1}>
                       <Home fontSize="inherit" style={{ marginRight: "1vw" }} />
-                    </Grid>{" "}
+                    </Grid>
                     <Grid item xs={11}>
                       <Typography align="left" variant="subtitle">
                         {props.residence || "Unknown"}
@@ -295,35 +317,33 @@ const UserCard = (props) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginBottom: "3vh",
+                marginBottom: "2vh",
+                marginLeft: "1vh",
+                marginRight: "1vh",
               }}
             >
-              <Button
-                variant="contained"
-                size="medium"
-                color="secondary"
-                startIcon={props.isFriend ? <Chat /> : <PersonAdd />}
-                onClick={() =>
-                  props.isFriend
-                    ? window.location.replace(`friends/${props.username}`)
-                    : handleAddFriend()
-                }
-              >
-                {props.isFriend ? "Chat" : "Add as Friend"}
-              </Button>
-              {props.isFriend && (
+              <Grid item xs={6}>
                 <Button
+                  fullWidth
                   variant="contained"
-                  size="medium"
-                  style={{ color: "white", backgroundColor: "#4DACDB" }}
-                  startIcon={<Telegram />}
-                  onClick={() =>
-                    window.open(`https://t.me/${props.tele_id}`, "_blank")
-                  }
+                  style={{ backgroundColor: "#EC799A" }}
+                  startIcon={<Delete />}
+                  onClick={handleRejectFriend}
                 >
-                  Chat via Telegram
+                  Reject
                 </Button>
-              )}
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<Check />}
+                  onClick={handleAddFriend}
+                >
+                  Accept
+                </Button>
+              </Grid>
             </CardActions>
           </Card>
         </Fade>
