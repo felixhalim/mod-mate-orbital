@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./chat-particulars.styles.css";
 
-const { db, auth } = require("../../firebase/index.firebase");
+const { db } = require("../../firebase/index.firebase");
 
 const ChatParticulars = (props) => {
   const [friendImageUrl, setFriendImageUrl] = useState("");

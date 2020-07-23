@@ -8,7 +8,7 @@ const Chat = (props) => {
   let user = auth.currentUser;
   let username = user.displayName;
 
-  const [isChatting, setIsChatting] = useState(true);
+  const [isChatting, setIsChatting] = useState(false);
   const [friendName, setFriendName] = useState("");
   const [interlocutor, setInterlocutor] = useState("");
 
