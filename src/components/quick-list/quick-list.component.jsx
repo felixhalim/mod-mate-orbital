@@ -74,7 +74,7 @@ const QuickList = () => {
         }}
         spacing={1}
       >
-        <Grid container item xs={9}>
+        <Grid container item xs={12} md={9}>
           {users.length !== 0 ? (
             <Grid item xs={12}>
               <Alert variant="filled" severity="success">
@@ -96,7 +96,7 @@ const QuickList = () => {
             </Grid>
           )}
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={12} md={3}>
           <div className="FilterField">
             <TextField
               fullWidth
@@ -121,10 +121,12 @@ const QuickList = () => {
           borderRadius: "20px",
           padding: "1vh",
         }}
+        spacing={1}
       >
         {modTaken.map((mod) => (
-          <Grid item xs={2}>
+          <Grid item xs={6} sm={4} md={3} lg={2}>
             <Button
+              fullWidth
               variant="contained"
               color={mod === selectedMod ? "secondary" : "primary"}
               onClick={(e) => {
@@ -134,7 +136,6 @@ const QuickList = () => {
                 marginTop: "1vh",
                 marginBottom: "1vh",
                 borderRadius: "20px",
-                width: "7vw",
               }}
               size="medium"
             >
@@ -155,7 +156,7 @@ const QuickList = () => {
       >
         {users.map((user) =>
           user.name.toLowerCase().includes(filter) || filter === "" ? (
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <UserCard
                 username={user.username}
                 avatar={user.avatar}

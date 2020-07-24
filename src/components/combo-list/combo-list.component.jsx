@@ -89,7 +89,7 @@ const ComboList = () => {
         }}
         spacing={1}
       >
-        <Grid container item xs={9}>
+        <Grid container item xs={12} md={9}>
           {users.length !== 0 ? (
             <Grid item xs={12}>
               <Alert variant="filled" severity="success">
@@ -113,7 +113,7 @@ const ComboList = () => {
             </Grid>
           )}
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={12} md={3}>
           <div className="FieldBorder">
             <TextField
               fullWidth
@@ -129,7 +129,7 @@ const ComboList = () => {
           </div>
         </Grid>
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={12} md={10}>
         <Autocomplete
           fullWidth
           multiple
@@ -159,7 +159,7 @@ const ComboList = () => {
           )}
         />
       </Grid>
-      <Grid container item xs={2} spacing={1}>
+      <Grid container item xs={12} md={2} spacing={1}>
         <Grid item xs={12}>
           <Button
             fullWidth
@@ -190,7 +190,7 @@ const ComboList = () => {
       >
         {users.map((user) =>
           user.name.toLowerCase().includes(filter) || filter === "" ? (
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <UserCard
                 username={user.username}
                 avatar={user.avatar}

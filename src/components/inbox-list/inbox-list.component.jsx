@@ -63,7 +63,7 @@ const InboxList = () => {
         }}
         spacing={1}
       >
-        <Grid container item xs={9}>
+        <Grid container item xs={12} md={9}>
           <Grid item xs={12}>
             <Alert variant="filled" severity="info">
               You have {friendRequestsData.length} friend request
@@ -71,7 +71,7 @@ const InboxList = () => {
             </Alert>
           </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={12} md={3}>
           <div className="FilterField">
             <TextField
               fullWidth
@@ -99,7 +99,7 @@ const InboxList = () => {
       >
         {friendRequestsData.map((request) =>
           request.name.toLowerCase().includes(filter) || filter === "" ? (
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <RequestCard
                 avatar={request.avatar}
                 name={request.name}
