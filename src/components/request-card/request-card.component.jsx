@@ -179,9 +179,10 @@ const UserCard = (props) => {
               </Grid>
             </Grid>
             <Grid container item xs={12} spacing={1} style={{ margin: "1vh" }}>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <Button
                   fullWidth
+                  size="small"
                   variant="contained"
                   style={{ backgroundColor: "#EC799A" }}
                   startIcon={<Delete />}
@@ -190,9 +191,10 @@ const UserCard = (props) => {
                   Reject
                 </Button>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <Button
                   fullWidth
+                  size="small"
                   variant="contained"
                   color="secondary"
                   startIcon={<Check />}

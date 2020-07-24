@@ -140,13 +140,12 @@ const SignUpForm = () => {
       alert("Email must not be empty");
     } else if (!isEmail(email) || !isNUSEmail(email)) {
       alert("You must sign up using NUS email (@u.nus.edu)");
-    } else if (
-      isEmpty(name) ||
-      isEmpty(username) ||
-      isEmpty(nusmods) ||
-      isEmpty(password)
-    ) {
-      alert("We detected error :( please check your form");
+    } else if (isEmpty(name)) {
+      alert("Please fill your name");
+    } else if (isEmpty(username)) {
+      alert("Please fill your username");
+    } else if (isEmpty(password)) {
+      alert("Please fill your password");
     } else if (password !== confirm) {
       alert("Please check your confirmation password");
     } else {
@@ -300,7 +299,6 @@ const SignUpForm = () => {
           name="password"
           label="Password"
           type="password"
-          placeholder="At least 6 characters"
           onChange={(e) => setPassword(e.target.value)}
         />
       </Grid>

@@ -105,7 +105,10 @@ const Major = () => {
     <div className="container">
       <div className="card">
         <div className="image-box" data-text="Major">
-          <img src="https://www.materialui.co/materialIcons/action/book_white_108x108.png" />
+          <img
+            alt="major-icon"
+            src="https://www.materialui.co/materialIcons/action/book_white_108x108.png"
+          />
         </div>
         <div className="content">
           <div>
