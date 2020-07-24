@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./chat-info.styles.css";
 
-const { db, auth } = require("../../firebase/index.firebase");
+const { db } = require("../../firebase/index.firebase");
 
 const ChatInfo = (props) => {
   const [career, setCareer] = useState("");
