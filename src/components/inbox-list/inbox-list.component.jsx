@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RequestCard from "../request-card/request-card.component";
 import { useEffect } from "react";
-import { Grid, Button, TextField } from "@material-ui/core/";
+import { Grid, TextField } from "@material-ui/core/";
 import Alert from "@material-ui/lab/Alert";
 import "./inbox-list.styles.css";
 
@@ -28,13 +28,12 @@ const InboxList = () => {
 
   const getFriendsRequests = () => {
     let reqList = [];
-    reqUsernameList.map((request) => {
-      db.doc(`/user/${request}`)
+    reqUsernameList.map((request) =>
+      db
+        .doc(`/user/${request}`)
         .get()
-        .then((doc) => {
-          reqList.push(doc.data());
-        });
-    });
+        .then((doc) => reqList.push(doc.data()))
+    );
     setFriendRequestsData(reqList);
   };
 
@@ -114,9 +113,7 @@ const InboxList = () => {
               />
             </Grid>
           ) : (
-            <div>
-              <h1>kosong</h1>
-            </div>
+            <div></div>
           )
         )}
       </Grid>
