@@ -22,6 +22,7 @@ const residences = [
   { status: "Eusoff Hall" },
   { status: "Raffles Hall" },
   { status: "Kent Ridge Hall" },
+  { status: "Sheares Hall" },
   { status: "King Edward VII Hall" },
   { status: "PGP House" },
   { status: "Tembusu College" },
