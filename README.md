@@ -2,7 +2,7 @@
 
 A web application that serves as the main platform to connect users. Users are able to search for friends who took common modules, add them as their friends, and chat with them via the instant messaging feature.
 
-![](https://i.imgur.com/6trBqHZ.png)
+![](https://i.imgur.com/cxt2zQH.png)
 
 ## Getting Started
 
@@ -26,10 +26,12 @@ You will also see any lint errors in the console.
 
 ## Built With
 
-- [React](https://reactjs.org/) - The front-end library
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces
 - [Material-UI](https://material-ui.com/) - React UI Framework
 - [Firebase Authentication](https://firebase.google.com/products/auth) - Extensible token-based auth system
 - [Cloud Firestore](https://firebase.google.com/products/firestore) - Serverless NoSQL & realtime database
+- [Firebase Realtime Database](https://firebase.google.com/products/firestore) - Cloud-hosted NoSQL database that allows realtime data storage and synchronization
+- [Cloud Storage](https://firebase.google.com/products/storage) - Powerful, simple, and cost-effective object storage service
 
 ## Authors
 
