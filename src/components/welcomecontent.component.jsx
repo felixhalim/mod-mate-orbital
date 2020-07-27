@@ -15,14 +15,15 @@ const WelcomeContent = () => {
       }}
     >
       <Grid item xs={12} align="right">
-        <Typography variant="h3">Welcome to ModMate</Typography>
+        <Typography variant="h3">
+          <b>Welcome to ModMate!</b>
+        </Typography>
       </Grid>
-      <Grid item xs={12} align="right">
-        <Typography variant="subtitle" align="right">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam quas
-          aspernatur qui incidunt inventore ullam harum atque temporibus
-          accusamus aliquam, facilis sit repellat odio fugiat quis dignissimos
-          quasi, voluptatum okay.
+      <Grid item xs={1} />
+      <Grid item xs={11} align="right">
+        <Typography variant="h6" align="right">
+          Discover endless possibilities of mutual connection for YOU with your
+          module cohorts at your fingertips in only just a blink!
         </Typography>
       </Grid>
     </Grid>
