@@ -1,0 +1,36 @@
+.chat-structure {
+  bottom: 0;
+  left: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.chatbox {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 700px;
+  height: 450px;
+  border-radius: 25px;
+  transform: translate(0%, -3.7%);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  overflow: overlay;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e4e2f1;
+  border-radius: 300px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #372f6c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #372f6c;
+}

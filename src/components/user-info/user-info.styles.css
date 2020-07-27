@@ -89,13 +89,13 @@
   border: none;
   background-color: #372f6c;
   color: white;
-  width: 100px;
+  width: 200px;
   max-height: 26px;
   padding: 4px;
   opacity: 0;
   transition: 0.5s ease-in-out;
   margin-top: -10px;
-  margin-left: -50px;
+  margin-left: -90px;
   resize: none;
 }
 

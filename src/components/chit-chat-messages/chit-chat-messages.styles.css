@@ -1,0 +1,33 @@
+.message-right {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+.message-left {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+.message-author {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 10px;
+  font-weight: 50px;
+}
+
+.message-content {
+  color: white;
+  background-color: #372f6c;
+  border-radius: 15px;
+  padding: 12px;
+}
+
+.message-column {
+  display: column;
+}
